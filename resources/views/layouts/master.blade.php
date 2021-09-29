@@ -9,10 +9,9 @@
             Passworld
         @endif
     </title>
-
     @include('includes.static-tags')
   </head>
-  <body class="font-sans antialiased ">
+  <body class="font-sans antialiased">
     {{ $slot }}
   </body>
 </html>
