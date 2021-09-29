@@ -43,41 +43,44 @@
       <div class="bg-gray-300 px-4 py-1 sm:px-6 sm:rounded-b-lg">
         <p class="text-base text-center">It would take <b>15 years</b> to crack this password</p>
       </div>
-      <!--Length Slider-->
-      <div class="mt-8">
-        <!--Length label-->
-        <label for="lengthSlider" id="lengthLabel" class="text-base">Length: 25</label>
-        <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="slider mt-2" style="width: 100%">
-      </div>
-      <!--Checkboxes-->
-      <div class="mt-7 flex">
-        <!--Numbers-->
-        <div class="flex-1 text-center">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-seagreen-dark bg-gray-200 border-0">
-            <span class="ml-4 text-l">Numbers</span>
-          </label>
+
+      <div class="shadow-ps overflow-hidden sm:rounded-lg mt-8 px-4 py-5 sm:px-6">
+        <!--Length Slider-->
+        <div class="">
+          <!--Length label-->
+          <label for="lengthSlider" id="lengthLabel" class="text-lg">Length: 25</label>
+          <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="slider mt-2" style="width: 100%">
         </div>
-        <!--Letters-->
-        <div class="flex-1 text-center">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-seagreen-dark bg-gray-200 border-0">
-            <span class="ml-4 text-l">Letters</span>
-          </label>
-        </div>
-        <!--Symbols-->
-        <div class="flex-1 text-center">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-seagreen-dark bg-gray-200 border-0">
-            <span class="ml-4 text-l">Symbols</span>
-          </label>
-        </div>
-        <!--Rude-->
-        <div class="flex-1 text-center">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-seagreen-dark bg-gray-200 border-0">
-            <span class="ml-4 text-l">Rude</span>
-          </label>
+        <!--Checkboxes-->
+        <div class="mt-7 flex">
+          <!--Numbers-->
+          <div class="flex-1 text-center">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
+              <span class="ml-4 text-lg">Numbers</span>
+            </label>
+          </div>
+          <!--Letters-->
+          <div class="flex-1 text-center">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
+              <span class="ml-4 text-lg">Letters</span>
+            </label>
+          </div>
+          <!--Symbols-->
+          <div class="flex-1 text-center">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
+              <span class="ml-4 text-lg">Symbols</span>
+            </label>
+          </div>
+          <!--Rude-->
+          <div class="flex-1 text-center">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
+              <span class="ml-4 text-lg">Rude</span>
+            </label>
+          </div>
         </div>
       </div>
 
