@@ -13,10 +13,10 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                mainBlue: {
-                light: '#5CC1AD',
-                DEFAULT: '#78FCE2',
-                dark: '#5CC1AD',
+                seagreen: {
+                light: '#73F1B4',
+                DEFAULT: '#6EE5AA',
+                dark: '#5EC593',
                 }
             },
         },

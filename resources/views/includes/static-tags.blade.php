@@ -7,3 +7,5 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
+<!--Font Awesome -->
+<script src="https://kit.fontawesome.com/a42d5e52b3.js" crossorigin="anonymous"></script>
