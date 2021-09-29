@@ -1,68 +1,126 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-gray-800">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Mobile menu button-->
-        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <!--
-            Icon when menu is closed.
+<!--Navbar-->
+<nav x-data="{ open: false }" class="bg-neutral-focus">
+  <nav class="navbar shadow-lg  text-neutral-content">
 
-            Heroicon name: outline/menu
+    <!--Top navbar-->
+    <div class="container mx-auto px-6 md:px-3">
+      <!--Logo on navbar-->
+      <div class="px-2 mx-2 navbar-start">
+        <img class="block lg:hidden h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
+        <img class="hidden lg:block h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
+      </div> 
 
-            Menu open: "hidden", Menu closed: "block"
-          -->
-          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <!--
-            Icon when menu is open.
+      <!--Middle of navbar-->
+      <div class="hidden px-2 mx-2 navbar-center lg:flex">
+        <div class="flex items-stretch space-x-1">
+          <a {!! Request::is('/') ? '' : 'href="/"' !!} class="btn btn-sm rounded-btn {{ Request::is('/') ? 'btn-active bg-gray-500 hover:bg-gray-500' : 'btn-ghost hover:bg-gray-600'}}">
+            Home
+          </a>
+          <a {!! Request::is('ass') ? '' : "href='/ass'" !!} class="btn btn-sm rounded-btn {{ Request::is('ass') ? 'btn-active bg-gray-500 hover:bg-gray-500' : 'btn-ghost hover:bg-gray-600'}}">
+            A$$word
+          </a>
+          <a {!! Request::is('common') ? '' : 'href="/common"' !!} class="btn btn-sm rounded-btn {{ Request::is('common') ? 'btn-active bg-gray-500 hover:bg-gray-500' : ' btn-ghost hover:bg-gray-600'}}">
+            Common
+          </a>
 
-            Heroicon name: outline/x
+        </div>
+      </div> 
 
-            Menu open: "block", Menu closed: "hidden"
-          -->
-          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <!--End of navbar-->
+      <div class="navbar-end flex">
+
+        @if (Auth::check())
+          <!--Desktop dropdown--->
+          <div class="dropdown dropdown-end hidden lg:block">
+            <!--Trigger-->
+            <div tabindex="0" class="btn btn-ghost btn-xs text-gray-500">
+                <span>{{ Auth::user()->name }}</span>
+                <svg class="fill-current h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </div> 
+
+            <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 text-neutral rounded-box w-52">
+              <li>
+                <a href="/dashboard">Dashboard</a>
+              </li>
+              <li>
+                <a href="/account">Account</a>
+              </li> 
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                  <li>
+                    <a onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                  </li> 
+              </form>
+
+            </ul>
+          </div>
+
+        @else
+          <a {!! Request::is('login') ? '' : 'href="/login"' !!} class="btn btn-sm rounded-btn hidden lg:flex flex-grow-0 {{ Request::is('login') ? 'btn-active bg-gray-500 hover:bg-gray-500' : 'btn-ghost hover:bg-gray-600'}}">Login</a>
+        @endif
+
+        <!--Hamburger-->
+        <button @click="open = ! open" class="lg:hidden btn btn-square btn-ghost hover:bg-gray-100 hover:text-gray-500 drawer-button" for="my-drawer">
+          <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0 flex items-center">
-          <img class="block lg:hidden h-8 w-auto" src="{{asset('assets/images/core/logo.svg')}}" alt="Workflow">
-          <img class="hidden lg:block h-8 w-auto" src="{{asset('assets/images/core/logo.svg')}}" alt="Workflow">
-        </div>
-        <div class="hidden sm:block sm:ml-6">
-          <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Generate</a>
+    </div>
+  </nav>
+  <!-- Responsive Navigation Menu -->
+  <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full bg-base-100 text-base-content">
+    <ul class="menu p-4 overflow-y-auto">
+      <x-responsive-nav-link href="/" :active="Request::is('/')">
+        {{ __('Generate') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link href="/ass" :active="Request::is('ass')">
+        {{ __('A$$word') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link href="/common" :active="Request::is('common')">
+        {{ __('Common passwords') }}
+      </x-responsive-nav-link>
+    </ul>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">A$$word</a>
-
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Common passwords</a>
-
-            
+    @if (Auth::check())
+      <!--User info-->
+      <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="flex items-center px-4">
+          <div class="flex-shrink-0">
+            <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
           </div>
-        </div>
+          <div class="ml-3">
+            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+          </div>
+        </div> 
       </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-      </div>
-    </div>
-  </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Generate</a>
-
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">A$$word</a>
-
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Common Passwords</a>
-
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-    </div>
+      <ul class="menu p-4 overflow-y-auto">
+        <!--Dashboard link-->
+        <x-responsive-nav-link href="/dashboard" :active="Request::is('dashboard')">
+          {{ __('Dashboard') }}
+        </x-responsive-nav-link>
+        <!--Logout link-->
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+            {{ __('Log out') }}
+          </x-responsive-nav-link>
+        </form>
+      </ul>
+    @else
+      <ul class="menu p-4 overflow-y-auto border-t border-gray-200">
+        <x-responsive-nav-link href="/login" :active="Request::is('login')">
+          {{ __('Login') }}
+        </x-responsive-nav-link>
+      </ul>
+    @endif
   </div>
 </nav>
+

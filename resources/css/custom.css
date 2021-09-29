@@ -4,3 +4,49 @@
  @author - Angus
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+ @import './variables';
+ 
+
+.monoFont{
+  font-family: 'Ubuntu Mono', monospace !important;
+ }
+
+/** Remove the outline from checkboxes */
+.checkbox input[type=checkbox]:focus + label::before,
+.checkbox input[type=radio]:focus + label::before {
+   outline: none !important;
+}
+
+
+/**
+ * Classes for word type colours
+ */
+
+.tableTag{
+  color: #FFFFFF !important;
+  border-style: none !important;
+}
+.NounBG{
+  background-color: #6DA359 !important;
+}
+
+.VerbBG{
+  background-color: #6A94A3 !important;
+}
+
+.AdjectiveBG{
+  background-color: #6663A3 !important;
+}
+
+.ParticipleBG{
+  background-color: #A36F9C !important;
+}
+
+.AdverbBG{
+  background-color: #A36E3B !important;
+}
+
+
+
+

@@ -1,5 +1,5 @@
 @if(session('success'))
-  <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500 text-center">
+  <div class="text-white px-6 py-4 border-0 relative mb-4 bg-green-500 text-center">
     <span class="inline-block align-middle mr-8">
       <b class="capitalize">Success!</b> {!! session('success') !!}
     </span>
@@ -10,7 +10,7 @@
 @endif
 
 @if(session('error'))
-  <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500 text-center">
+  <div class="text-white px-6 py-4 border-0 relative mb-4 bg-red-500 text-center">
     <span class="inline-block align-middle mr-8">
       <b class="capitalize">Error!</b> {!! session('error') !!}
     </span>
@@ -21,7 +21,7 @@
 @endif
 
 @if(session('message'))
-  <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500 text-center">
+  <div class="text-white px-6 py-4 border-0 relative mb-4 bg-blue-500 text-center">
     <span class="inline-block align-middle mr-8">
       {!! session('message') !!}
     </span>
@@ -32,7 +32,7 @@
 @endif
 
 @if ($errors->any())
-  <div class="text-red-700 px-6 py-4 border-0 rounded relative mb-4 bg-red-100 text-center">
+  <div class="text-red-700 px-6 py-4 border-0 relative mb-4 bg-red-100 text-center">
     <span class="inline-block align-middle mr-8">
       <ul>
         @foreach ($errors->all() as $error)
