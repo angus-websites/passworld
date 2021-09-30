@@ -9,7 +9,7 @@
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Use one of our randomly generated passwords to keep your accounts safe and secure.</p>
 
       <!--Password view-->
-      <div class="flex flex-row items-center mt-12 space-x-4 bg-gray-200 overflow-hidden sm:rounded-t-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 ">
+      <div class="flex flex-row items-center mt-12 space-x-4 bg-gray-200 overflow-hidden rounded-t-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 ">
         <!--Strength indicator-->
         <div class="flex-initial">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
@@ -40,11 +40,11 @@
         </div>
       </div>
       <!--Strength & Time section-->
-      <div class="bg-gray-300 px-4 py-1 sm:px-6 sm:rounded-b-lg">
+      <div class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg">
         <p class="md:text-base text-center text-sm">It would take <b>15 years</b> to crack this password</p>
       </div>
 
-      <div class="shadow-ps overflow-hidden sm:rounded-lg mt-8 px-4 py-5 sm:px-6">
+      <div class="shadow-ps overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
         <!--Length Slider-->
         <div class="">
           <!--Length label-->
@@ -52,7 +52,7 @@
           <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="slider mt-4" style="width: 100%">
         </div>
         <!--Checkboxes-->
-        <div class="mt-7 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
+        <div class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
           <!--Numbers-->
           <div class="flex-initial">
             <label class="inline-flex items-center">

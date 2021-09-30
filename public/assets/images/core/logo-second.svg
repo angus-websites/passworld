@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 778 778" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-30272.1,-1386)">
+        <g id="New-favicon" serif:id="New favicon" transform="matrix(1.27124,0,0,1.27124,30272.1,-646.716)">
+            <rect x="0" y="1599" width="612" height="612" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="0" y="1599" width="612" height="612"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g>
+                    <g transform="matrix(5.19336,0,0,5.19305,-3111.61,-534.025)">
+                        <circle cx="658.073" cy="469.675" r="58.921" style="fill:white;"/>
+                    </g>
+                    <g transform="matrix(1.05045,0,0,1.05045,-588.874,1411.65)">
+                        <circle cx="658.073" cy="469.675" r="58.921" style="fill:rgb(227,102,143);"/>
+                    </g>
+                    <g transform="matrix(1.05045,0,0,1.05045,-181.667,1411.61)">
+                        <circle cx="658.073" cy="469.675" r="58.921" style="fill:rgb(255,140,66);"/>
+                    </g>
+                    <g transform="matrix(1.59934,0,0,1.59934,-746.479,1153.83)">
+                        <circle cx="658.073" cy="469.675" r="58.921" style="fill:rgb(41,209,153);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
