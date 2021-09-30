@@ -48,7 +48,7 @@
           </x-slot>
           </x-dropdown>
         @else
-          <a href="/login" class="px-3 py-2 text-md font-medium rounded-md {{ Request::is('login') ? 'text-green-600' : 'text-gray-500 hover:bg-green-100 hover:text-green-600' }}" aria-current="page">Login</a>
+          <a href="/login" class="px-3 py-2 text-md font-medium rounded-md {{ Request::is('login') ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-green-100 hover:text-green-600' }}" aria-current="page">Login</a>
         @endif
       </div>
 
