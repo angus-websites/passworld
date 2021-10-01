@@ -1,0 +1,47 @@
+@section('title', 'A$$word')
+<x-app-layout>
+  <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:my-16 lg:my-20 lg:px-8 xl:my-25">
+    <div class="sm:text-center lg:text-left">
+      <h1 class="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
+        <span class="block xl:inline">A$$word</span>
+      </h1>
+      <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Generate a strong and memorable rude password.</p>  
+
+      <!--View password-->
+      <div class="flex flex-row items-center mt-20 space-x-4 bg-gray-200 overflow-hidden rounded-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 ">
+        <!--Password view-->
+        <div class="flex-1">
+          <div class="">
+            <p class="md:text-5xl text-2xl sm:text-3xl monoFont text-center">
+              boiling_ass_ballsack
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Buttons-->
+      <div class="mt-5 sm:mt-10 sm:flex justify-center">
+        <!--Left button-->
+        <div class="">
+          <button class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-mainorange hover:bg-mainorange-dark md:py-4 md:text-lg md:px-10 space-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
+              <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <!--Right button-->
+        <div class="mt-3 sm:mt-0 sm:ml-3">
+          <button class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-seagreen-daker bg-seagreen hover:bg-seagreen-dark hover:text-white md:py-4 md:text-lg md:px-10 space-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+            </svg>
+            <span>Generate</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</x-app-layout>

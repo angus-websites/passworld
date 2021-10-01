@@ -20,21 +20,22 @@ module.exports = {
             },
             colors: {
                 seagreen: {
-                light: '#73F1B4',
-                DEFAULT: '#6EE5AA',
-                dark: '#5EC593',
+                light: '#A0F9D8',
+                DEFAULT: '#18E599',
+                dark: '#17B178',
+                darker: '#276F54',
                 },
                 mainorange:{
-                  light: '#FFA770',
+                  light: '#FFCAA7',
                   DEFAULT: '#FF8C42',
-                  dark: '#FF680A', 
-                  darker: '#DC864D', 
+                  dark: '#D85F12', 
+                  darker: '#774A2D', 
                 },
                 mainpink:{
-                  light: '#EB6FAD',
-                  DEFAULT: '#CB538C',
-                  dark: '#BD4E82', 
-                  darker: '#AF4879', 
+                  light: '#F1CEDA',
+                  DEFAULT: '#DF3F74',
+                  dark: '#9D3658', 
+                  darker: '#66293D', 
                 },
 
             },

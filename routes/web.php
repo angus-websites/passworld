@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('public.home');
 });
 
+Route::get('/ass', function () {
+    return view('public.ass');
+});
+
 
 
 Route::get('/dashboard', function () {

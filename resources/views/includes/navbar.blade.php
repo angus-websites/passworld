@@ -11,9 +11,9 @@
           <div class="flex space-x-4">
             <a href="/" class="px-3 py-2 rounded-md text-md font-medium {{ Request::is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}" aria-current="page">Generate</a>
 
-            <a href="/assword" class="px-3 py-2 rounded-md text-md font-medium {{ Request::is('/assword') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}" aria-current="page">A$$word</a>
+            <a href="/ass" class="px-3 py-2 rounded-md text-md font-medium {{ Request::is('ass') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}" aria-current="page">A$$word</a>
 
-            <a href="/common" class="px-3 py-2 rounded-md text-md font-medium {{ Request::is('/common') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}" aria-current="page">Common</a>
+            <a href="/common" class="px-3 py-2 rounded-md text-md font-medium {{ Request::is('common') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}" aria-current="page">Common</a>
 
           </div>
         </div>
