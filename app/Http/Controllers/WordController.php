@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wordtype;
+use App\Models\Grammar;
 
 
 class WordController extends Controller
@@ -15,8 +16,11 @@ class WordController extends Controller
      */
     public function index()
     {
-        $nouns=Wordtype::where('name', '=', 'Noun')->firstOrFail()->words()->get();
-        return view('public.words.index',["nouns" => $nouns]);
+        //$nouns=Wordtype::where('name', '=', 'Noun')->firstOrFail()->words()->get();
+        $types = Wordtype::all();
+        $grammars = Grammar::all();
+
+        return view('public.words.index',["types" => $types,"grammars" => $grammars]);
     }
 
     /**

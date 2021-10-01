@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(WordtypeSeeder::class);
         $this->call(WordSeeder::class);
+
+        $this->call(GrammarSeeder::class);
     }
 }

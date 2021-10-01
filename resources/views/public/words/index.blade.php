@@ -7,11 +7,26 @@
       </h1>
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Bruh</p>  
 
-      <ul>
-        @foreach($nouns as $noun)
-          <li>{{$noun->content}}</li>
-        @endforeach
-      </ul>
+      <!--Grammars-->
+      @foreach($grammars as $grammar)
+        <div class="mt-8">
+          <h4 class="font-bold text-gray-800 text-l">New Grammar</h4>
+          <p class="mt-3">{{$grammar->displayLanguage()}}</p>
+        </div>
+      @endforeach
+
+      <!--Types-->
+      @foreach($types as $type)
+        <div class="mt-10">
+          <h3 class="font-bold text-gray-800 text-xl">{{$type->name}}</h3>
+          <p class="mt-3 text-base text-md">{{$type->description}}</p>  
+          <ul class="mt-2">
+            @foreach($type->words()->get() as $word)
+              <li>{{$word->content}}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endforeach
 
     </div>
   </div>
