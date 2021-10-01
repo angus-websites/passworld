@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,8 @@ Route::get('/ass', function () {
     return view('public.ass');
 });
 
-
+//Words resource controller
+Route::resource('words', WordController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
