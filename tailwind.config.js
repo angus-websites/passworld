@@ -21,8 +21,8 @@ module.exports = {
             colors: {
                 seagreen: {
                 light: '#A0F9D8',
-                DEFAULT: '#18E599',
-                dark: '#17B178',
+                DEFAULT: '#17B178',
+                dark: '#259169',
                 darker: '#276F54',
                 },
                 mainorange:{

@@ -40,7 +40,7 @@
         </div>
       </div>
       <!--Strength & Time section-->
-      <div class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg">
+      <div class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-mainorange">
         <p class="md:text-base text-center text-sm">It would take <b>15 years</b> to crack this password</p>
       </div>
 
