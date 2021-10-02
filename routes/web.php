@@ -23,6 +23,10 @@ Route::get('/ass', function () {
     return view('public.ass');
 });
 
+Route::get('/common', function () {
+    return view('public.common');
+});
+
 //Words resource controller
 Route::resource('words', WordController::class);
 
