@@ -30,4 +30,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//Ajax
+Route::get('/quick_ass', 'App\Http\Controllers\WordController@quick_ass')->middleware('ajax');
+
+
 require __DIR__.'/auth.php';

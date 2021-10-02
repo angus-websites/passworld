@@ -9,6 +9,18 @@ use App\Models\Grammar;
 
 class WordController extends Controller
 {
+
+    /**
+     * Ajax function for generating
+     * an assword
+     */
+    public function quick_ass(Request $request){
+        //Search the keywords table
+        $assword = Grammar::randomPhrase();
+        //Return the results
+        return response()->json($assword);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +31,8 @@ class WordController extends Controller
         //$nouns=Wordtype::where('name', '=', 'Noun')->firstOrFail()->words()->get();
         $types = Wordtype::all();
         $grammars = Grammar::all();
-
-        return view('public.words.index',["types" => $types,"grammars" => $grammars]);
+        $phrase = Grammar::randomPhrase();
+        return view('public.words.index',["types" => $types,"grammars" => $grammars,"phrase" => $phrase]);
     }
 
     /**
