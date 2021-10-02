@@ -9,7 +9,7 @@ class Grammar extends Model
 {
     use HasFactory;
 
-    public static function randomPhrase(){
+    public static function randomPhrase($numberOfWords=3,$seperator="_"){
         return Grammar::inRandomOrder()->first()->phrase();
     }
 
@@ -39,11 +39,16 @@ class Grammar extends Model
      * phrase using the grammar
      * and the words in that grammar
      */
-    public function phrase(){
+    public function phrase($seperator="_"){
         $str = "";
-        foreach($this->language()->get() as $wordtype){
+        $wordtypes = $this->language()->get();
+        for ($x = 0; $x < count($wordtypes); $x++) {
+            $wordtype=$wordtypes[$x];
             $str.=$wordtype->words()->inRandomOrder()->first()->content;
-            $str.=" ";
+            if ($x < count($wordtypes)-1){
+                $str.=$seperator;
+            }
+            
         }
         return $str;
         inRandomOrder()->get();
