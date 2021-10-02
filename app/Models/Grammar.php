@@ -51,6 +51,5 @@ class Grammar extends Model
             
         }
         return $str;
-        inRandomOrder()->get();
     }
 }
