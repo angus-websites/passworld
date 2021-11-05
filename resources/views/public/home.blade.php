@@ -94,3 +94,4 @@
     </div>
   </div>
 </x-app-layout>
+<script src="{{ asset('js/generate.js') }}" defer></script>

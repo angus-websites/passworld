@@ -24,11 +24,11 @@ class Parameter{
    * @param  {int} length [length of random string]
    */
   static pickRandomChar(str,length){
-    masterString = ""
+    var string = ""
     for (var j = 0; j < length; j++) {
-      masterString += str.charAt(Math.floor(Math.random() * str.length))
+      string += str.charAt(Math.floor(Math.random() * str.length))
     }
-    return masterString
+    return string
   }
 
   /**
@@ -36,21 +36,7 @@ class Parameter{
    * this parameter given a length
    */
   getRandom(length){
-    return this.pickRandomChar(this.content,length)
-  }
-}
-
-/**
- * Used for storing and mixing
- * parameters together
- */
-class ParameterHub{
-  constructor(paramList){
-    this.paramList = paramList
-  }
-
-  shuffle(){
-    return this.paramList.sort(() => Math.random() - 0.5)
+    return Parameter.pickRandomChar(this.content,length)
   }
 }
 
@@ -68,11 +54,6 @@ class ParameterHub{
  */
 class Complexity{
 
-  static letters = Parameter("abcdefghijklmnopqrstuvwxyz");
-  static uppercase = Parameter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-  static numbers = Parameter("0123456789");
-  static symbols = Parameter(",./@()[]&%£$");
-
   constructor(length,letters,numbers,uppercase,symbols){
     this.length = length
     this.hasLetters = letters
@@ -80,8 +61,13 @@ class Complexity{
     this.hasUppercase = uppercase
     this.hasSymbols = symbols
 
+    this.letters = new Parameter("abcdefghijklmnopqrstuvwxyz");
+    this.uppercase = new Parameter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    this.numbers = new Parameter("0123456789");
+    this.symbols = new Parameter(",./@()[]&%£$");
+
     //Get number of parameters for this complexity
-    this.params = [hasLetters,hasNumbers,hasUppercase,hasSymbols].filter(Boolean);
+    this.params = [this.hasLetters,this.hasNumbers,this.hasUppercase,this.hasSymbols].filter(Boolean);
     this.numberOfParams=this.params.length;
   }
 
@@ -97,29 +83,30 @@ class Complexity{
    */
   getMasterString(){
 
-    master = "";
+    var master = "";
     //Calculate set size for each param
     let setSize = Math.floor(this.length/this.numberOfParams);  
     let finalSetSize = this.length-(setSize*(this.numberOfParams-1))
     //Loop through each set
     for (var i = 0; i < this.numberOfParams; i++) {
-      size = setSize
+      var size = setSize
       if(i >= this.numberOfParams - 1){
         size = finalSetSize
       }
-      currentSet = this.params[i]
+      var currentSet = this.params[i]
+      console.log("CURRENT SET "+currentSet)
       switch(currentSet) {
         case this.hasUppercase:
-          master+=getUppercase(size)
+          master+=this.getUppercase(size)
           break
         case this.hasNumbers:
-          master+=getNumbers(size)
+          master+=this.getNumbers(size)
           break
         case this.hasSymbols:
-          master+=getSymbols(size)
+          master+=this.getSymbols(size)
           break
         default:
-          master+=getLetters(size)
+          master+=this.getLetters(size)
           break
       }
 
@@ -129,26 +116,12 @@ class Complexity{
   }
 
   /**
-   * Given the character string and a specified 
-   * length, return a random segment
-   * @param  {string} str    [string list]
-   * @param  {int} length [length of random string]
-   */
-  static pickRandomChar(str,length){
-    masterString = ""
-    for (var j = 0; j < length; j++) {
-      masterString += str.charAt(Math.floor(Math.random() * str.length))
-    }
-    return masterString
-  }
-
-  /**
    * Get a random string
    * of letters
    * @param  {int} length [length of random string]
    */
   getLetters(length){
-    return this.pickRandomChar(this.letters,length)
+    return this.letters.getRandom(length)
   }
 
   /**
@@ -157,7 +130,7 @@ class Complexity{
    * @param  {int} length [length of random string]
    */
   getUppercase(length){
-    return this.pickRandomChar(this.letters.toUpperCase(),length)
+    return this.uppercase.getRandom(length)
   }
 
   /**
@@ -166,7 +139,7 @@ class Complexity{
    * @param  {int} length [length of random string]
    */
   getNumbers(length){
-    return this.pickRandomChar(this.numbers,length)
+    return this.numbers.getRandom(length)
   }
 
   /**
@@ -175,7 +148,7 @@ class Complexity{
    * @param  {int} length [length of random string]
    */
   getSymbols(length){
-    return this.pickRandomChar(this.symbols,length)
+    return this.symbols.getRandom(length)
   }
 
 }
@@ -190,3 +163,6 @@ class Password{
 
   }
 }
+
+c =  new Complexity(8,true,true,true,true)
+console.log(c.getMasterString())
