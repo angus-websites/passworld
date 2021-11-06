@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
+
+    public function __construct(){
+        $this->authorizeResource(CommonPassword::class);
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
