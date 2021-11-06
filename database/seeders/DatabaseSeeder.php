@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WordSeeder::class);
 
         $this->call(GrammarSeeder::class);
+        $this->call(CommonPasswordSeeder::class);
     }
 }
