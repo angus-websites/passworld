@@ -35,7 +35,7 @@ Run sail
 ./vendor/bin/sail up
 ```
 
-Migrate the database
+Migrate the database - *Note a UserSeeder.php file will need to be created in order for the seeder to work*
 
 ```bash
 ./vendor/bin/sail php artisan migrate
