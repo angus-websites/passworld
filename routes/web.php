@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\AssController;
 
 
 /*
@@ -20,9 +21,10 @@ Route::get('/', function () {
     return view('public.home');
 });
 
-Route::get('/ass', function () {
-    return view('public.ass');
-});
+
+//Assword
+Route::get('/ass', [AssController::class, 'index']);
+
 
 //Common password controller
 Route::resource('common', CommonController::class);

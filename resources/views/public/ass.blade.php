@@ -13,7 +13,7 @@
         <div class="flex-1">
           <div class="">
             <p id="assLabel" class="md:text-5xl text-2xl sm:text-3xl monoFont text-center">
-              boiling_ass_ballsack
+              {{$assword}}
             </p>
           </div>
         </div>
