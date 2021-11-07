@@ -18,7 +18,7 @@ class CreateWordsTable extends Migration
             $table->timestamps();
 
             $table->string("content");
-            $table->integer("pres")->nullable();
+            $table->integer("pres")->default(0);
             $table->bigInteger('wordtype_id')->unsigned();
             $table->foreign('wordtype_id')
                 ->references('id')->on('wordtypes');

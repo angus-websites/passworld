@@ -33,6 +33,7 @@ class GrammarSeeder extends Seeder
         $verb=Wordtype::where('name', '=', 'Verb')->firstOrFail();
         $noun=Wordtype::where('name', '=', 'Noun')->firstOrFail();
         $part=Wordtype::where('name', '=', 'Participle')->firstOrFail();
+        $adv=Wordtype::where('name', '=', 'Adverb')->firstOrFail();
 
         //------Create the grammars-------
 
@@ -57,8 +58,17 @@ class GrammarSeeder extends Seeder
         $g3->language()->sync([
             ["wordtype_id"=>$adj->id, "order"=>1],
             ["wordtype_id"=>$adj->id, "order"=>2],
-            ["wordtype_id"=>$adj->id, "order"=>3],
+            ["wordtype_id"=>$noun->id, "order"=>3]
+        ]);
+
+        // Adv -> Adj -> Noun
+        $g4=Grammar::create([]);        
+        $g4->language()->sync([
+            ["wordtype_id"=>$adv->id, "order"=>1],
+            ["wordtype_id"=>$adj->id, "order"=>2],
+            ["wordtype_id"=>$part->id, "order"=>3],
             ["wordtype_id"=>$noun->id, "order"=>4]
+
         ]);
 
 

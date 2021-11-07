@@ -48,5 +48,11 @@ class WordtypeSeeder extends Seeder
           'description' => "A participle is a nonfinite verb form that has some of the characteristics and functions of both verbs and adjectives",
         ]);
 
+        //Adverbs
+        Wordtype::create([
+          'name' => "Adverb",
+          'description' => "An adverb is a word that describes a verb",
+        ]);
+
     }
 }

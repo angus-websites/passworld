@@ -30,6 +30,7 @@ class WordSeeder extends Seeder
         $verb=Wordtype::where('name', '=', 'Verb')->firstOrFail();
         $noun=Wordtype::where('name', '=', 'Noun')->firstOrFail();
         $part=Wordtype::where('name', '=', 'Participle')->firstOrFail();
+        $adv=Wordtype::where('name', '=', 'Adverb')->firstOrFail();
 
 
         //============Adjectives============
@@ -142,6 +143,42 @@ class WordSeeder extends Seeder
             'content' => "freezing",
             'wordtype_id' => $part->id,
         ]);
+
+        //============Adverb============
+        Word::create([
+            'content' => "Terribly",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Very",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Awkwardly",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Seriously",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Wildly",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Extremely",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Suprisingly",
+            'wordtype_id' => $adv->id,
+        ]);
+        Word::create([
+            'content' => "Badly",
+            'wordtype_id' => $adv->id,
+        ]);
+
+
 
     }
 }

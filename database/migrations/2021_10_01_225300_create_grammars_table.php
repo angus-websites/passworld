@@ -39,6 +39,7 @@ class CreateGrammarsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('grammar_wordtype');
         Schema::dropIfExists('grammars');
     }
 }
