@@ -12,8 +12,7 @@
         <div class="mt-8">
           <h4 class="font-bold text-gray-800 text-l">New Grammar: {{$grammar->id}}</h4>
           <p class="mt-3">{{$grammar->displayLanguage()}}</p>
-          <p class="mt-3">{{$grammar->randomPhrase()}}</p>
-
+          <p class="mt-3">{{$grammar->phrase()}}</p>
         </div>
       @endforeach
 

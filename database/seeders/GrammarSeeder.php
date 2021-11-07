@@ -25,6 +25,7 @@ class GrammarSeeder extends Seeder
         //Clear data
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Grammar::truncate();
+        DB::table('grammar_wordtype')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         //Get the word types
@@ -33,12 +34,36 @@ class GrammarSeeder extends Seeder
         $noun=Wordtype::where('name', '=', 'Noun')->firstOrFail();
         $part=Wordtype::where('name', '=', 'Participle')->firstOrFail();
 
-        //Create the grammars
-        $g1=Grammar::create([]);
-        $g1->language()->sync([$adj->id => ["order"=>1],$part->id => ["order"=>2],$noun->id => ["order"=>3]]);
+        //------Create the grammars-------
 
+        // Adj -> Verb -> Noun
+        $g1=Grammar::create([]);
+        $g1->language()->sync([
+            ["wordtype_id"=>$adj->id, "order"=>1],
+            ["wordtype_id"=>$verb->id, "order"=>2],
+            ["wordtype_id"=>$noun->id, "order"=>3]
+        ]);
+
+        // Adj -> Part -> Noun
         $g2=Grammar::create([]);
-        $g2->language()->sync([$adj->id => ["order"=>1],$verb->id => ["order"=>2],$noun->id => ["order"=>3]]);
+        $g2->language()->sync([
+            ["wordtype_id"=>$adj->id, "order"=>1],
+            ["wordtype_id"=>$part->id, "order"=>2],
+            ["wordtype_id"=>$noun->id, "order"=>3]
+        ]);
+
+        // Adj -> Adj -> Noun
+        $g3=Grammar::create([]);        
+        $g3->language()->sync([
+            ["wordtype_id"=>$adj->id, "order"=>1],
+            ["wordtype_id"=>$adj->id, "order"=>2],
+            ["wordtype_id"=>$adj->id, "order"=>3],
+            ["wordtype_id"=>$noun->id, "order"=>4]
+        ]);
+
+
+
+
 
 
     }
