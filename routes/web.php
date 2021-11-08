@@ -25,6 +25,9 @@ Route::get('/', function () {
 //Assword
 Route::get('/ass', [AssController::class, 'index']);
 
+//Word Gen Example
+Route::post('/words/example', [WordController::class, 'example'])->name('genExample');
+
 //Word submit
 Route::get('/words/submit', [WordController::class, 'submit']);
 
