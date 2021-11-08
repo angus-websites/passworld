@@ -43,7 +43,8 @@ class WordController extends Controller
      */
     public function submit()
     {
-        return view('public.words.submit');
+        $types = Wordtype::all();
+        return view('public.words.submit',["types" => $types]);
     }
 
 
