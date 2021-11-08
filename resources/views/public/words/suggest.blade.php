@@ -3,13 +3,13 @@
   <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:my-16 lg:my-20 lg:px-8 xl:my-25">
     <!--Title-->
     <div class="sm:text-center lg:text-left">
-      <x-text.page-title title="Submit" subtitle="Submit a new word to be used in the A$$word generator"/>
+      <x-text.page-title title="Suggest" subtitle="Suggest a new word to be used in the A$$word generator"/>
     </div>
     <!--Middle-->
     <div>
       <!--Form-->
       <div class="max-w-xl mt-10 sm:mx-auto lg:mx-0">
-          <form method="POST" action="{{{ route('words.submitSave') }}}">
+          <form method="POST" action="{{{ route('words.suggestSave') }}}">
               @csrf
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">

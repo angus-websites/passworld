@@ -41,20 +41,20 @@ class WordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showSubmit()
+    public function showSuggest()
     {
         $types = Wordtype::all();
-        return view('public.words.submit',["types" => $types]);
+        return view('public.words.suggest',["types" => $types]);
     }
 
 
     /**
-     * Save the new submit the user
+     * Save the new suggestion the user
      * gave to be approved by the admin
      *
      * @return \Illuminate\Http\Response
      */
-    public function saveSubmit(Request $request)
+    public function saveSuggest(Request $request)
     {
         //Validation
         $validated = $request->validate([
