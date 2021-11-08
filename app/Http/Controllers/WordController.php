@@ -36,6 +36,18 @@ class WordController extends Controller
     }
 
     /**
+     * Provides a screen for users
+     * to submit a new word to the database
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function submit()
+    {
+        return view('public.words.submit');
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

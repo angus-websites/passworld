@@ -25,6 +25,9 @@ Route::get('/', function () {
 //Assword
 Route::get('/ass', [AssController::class, 'index']);
 
+//Word submit
+Route::get('/words/submit', [WordController::class, 'submit']);
+
 
 //Common password controller
 Route::resource('common', CommonController::class);

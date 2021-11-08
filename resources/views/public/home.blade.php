@@ -6,7 +6,6 @@
         <span class="block xl:inline">Generate a</span>
         <span class="block text-seagreen xl:inline">password</span>
       </h1>
-      
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Use one of our randomly generated passwords to keep your accounts safe and secure.</p>
 
       <!--Password view-->
