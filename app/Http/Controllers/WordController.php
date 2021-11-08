@@ -36,42 +36,39 @@ class WordController extends Controller
     }
 
     /**
-     * Generate an example
-     * grammar given the users
-     * input
-     * @param $type - The type of word
-     * @param $word - The users chosen word
+     * Provides a screen for users
+     * to submit a new word to the database
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function example(Request $request){
+    public function showSubmit()
+    {
+        $types = Wordtype::all();
+        return view('public.words.submit',["types" => $types]);
+    }
 
+
+    /**
+     * Save the new submit the user
+     * gave to be approved by the admin
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveSubmit(Request $request)
+    {
         //Validation
         $validated = $request->validate([
           'wordType' => 'required',
           'word' => 'required'
         ]);
 
-        $wordType=Wordtype::where('name', '=', $request->wordType)->firstOrFail();
+        //Process the input here
 
-        ;
-        //Pick a random grammar for our word type
-        $grammar = $wordType->grammars()->inRandomOrder()->first();
-        //Generate a phrase using our new word
-
-        //Return it to the user
-        return redirect()->back()->with('message', 'Example_word_here');
+        //Return with success message
+        return redirect()->back()->with('success', 'Your word has been sent for approval!');
     }
 
-    /**
-     * Provides a screen for users
-     * to submit a new word to the database
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function submit()
-    {
-        $types = Wordtype::all();
-        return view('public.words.submit',["types" => $types]);
-    }
+
 
 
     /**

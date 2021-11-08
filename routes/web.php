@@ -25,11 +25,9 @@ Route::get('/', function () {
 //Assword
 Route::get('/ass', [AssController::class, 'index']);
 
-//Word Gen Example
-Route::post('/words/example', [WordController::class, 'example'])->name('genExample');
-
-//Word submit
-Route::get('/words/submit', [WordController::class, 'submit']);
+//Word submit - Show the screen
+Route::get('/words/submit', [WordController::class, 'showSubmit']);
+Route::post('/words/submit', [WordController::class, 'saveSubmit'])->name("words.submitSave");
 
 
 //Common password controller
