@@ -14,7 +14,7 @@
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">
                 <label class="block mb-1" for="wordType">Type of word</label>
-                <select id="wordType" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input" name="wordType">
+                <select required id="wordType" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input" name="wordType">
                   @foreach($types as $type)
                     <option>{{$type->name}}</option>
                     @endforeach
@@ -24,7 +24,7 @@
               <!--Word-->
               <div class="mb-6">
                 <label class="block mb-1" for="wordInput">Your word</label>
-                <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="wordInput" name="word" autocomplete="off"/>
+                <input required class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="wordInput" name="word" autocomplete="off"/>
               </div>
 
 

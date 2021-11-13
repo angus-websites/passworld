@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Wordtype;
 use App\Models\Grammar;
+use App\Models\Suggestion;
 
 
 class WordController extends Controller
@@ -58,11 +59,18 @@ class WordController extends Controller
     {
         //Validation
         $validated = $request->validate([
-          'wordType' => 'required',
-          'word' => 'required'
+          'wordType' => 'required|exists:wordtypes,name',
+          'word' => 'required|unique:suggestions,content|unique:words,content',
         ]);
 
-        //Process the input here
+        //Fetch the word type
+        $wordTypeID=Wordtype::where('name', '=', $request->wordType)->firstOrFail()->id;
+
+        //Save the suggestion to the suggestions table here
+        $suggestion = new Suggestion;
+        $suggestion->content = $request->word;
+        $suggestion->wordtype_id = $wordTypeID;
+        $suggestion->save();
 
         //Return with success message
         return redirect()->back()->with('success', 'Your word has been sent for approval!');
