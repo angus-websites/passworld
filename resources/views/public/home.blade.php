@@ -81,13 +81,6 @@
               <span class="ml-4 text-lg">Rude</span>
             </label>
           </div>
-          <!--Leet-->
-          <div class="flex-initial">
-            <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
-              <span class="ml-4 text-lg">Leet</span>
-            </label>
-          </div>
         </div>
       </div>  
     </div>
