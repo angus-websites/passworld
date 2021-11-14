@@ -40,6 +40,33 @@ class Parameter{
   }
 }
 
+class RudeParameter{
+
+  constructor(wordList){
+    this.wordList=wordList
+  }
+
+  /**
+   * Fetch a random rude
+   * word given the length of 
+   * the master string
+   */
+  getWord(maxSize){
+
+    //Shuffle list
+    this.wordList.sort(() => Math.random() - 0.5);
+
+    //Loop though words
+    for (var i = 0; i < this.wordList.length; i++) {
+      const current = this.wordList[i]
+      if (current.length < maxSize){
+        return current
+      }
+    }
+    return "";
+  }
+}
+
 /**
  * Complexity class is 
  * responsible for specifying
@@ -54,17 +81,19 @@ class Parameter{
  */
 class Complexity{
 
-  constructor(length,letters,numbers,uppercase,symbols){
+  constructor(length,letters,numbers,uppercase,symbols,rude){
     this.length = length
     this.hasLetters = letters
     this.hasNumbers = numbers
     this.hasUppercase = uppercase
     this.hasSymbols = symbols
+    this.hasRude = rude
 
     this.letters = new Parameter("abcdefghijklmnopqrstuvwxyz");
     this.uppercase = new Parameter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     this.numbers = new Parameter("0123456789");
     this.symbols = new Parameter(",./@()[]&%£$");
+    this.rude = new RudeParameter(["tree","mole","balls"]) //TODO get from server
 
     //Get number of parameters for this complexity
     this.params = this.filterParamaters().sort(() => Math.random() - 0.5);
@@ -98,25 +127,34 @@ class Complexity{
 
 
   /**
-   * Will generate a long list
-   * of characters, symbols, numbers
-   * that will go into the password, just
-   * not mixed yet
+   * Will generate a random
+   * string of characters
    */
-  getMasterString(){
+  generate(){
     var master = "";
+
+    //Size of password to split
+    var splitSize = this.length 
+    var paramCount = this.numberOfParams
+
+    //Check to see if we need a rude word and adjust split & param count
+    if(this.hasRude){
+      //Generate rude word
+      var rudeWord = this.rude.getWord(this.length)
+      splitSize = splitSize-rudeWord.length
+    }
+
     //Calculate set size for each param
-    let setSize = Math.floor(this.length/this.numberOfParams);  
-    let finalSetSize = this.length-(setSize*(this.numberOfParams-1))
-    console.log("Set size is: "+setSize)
+    let setSize = Math.floor(splitSize/paramCount);  
+    let finalSetSize = splitSize-(setSize*(paramCount-1))
+
     //Loop through each set
-    for (var i = 0; i < this.numberOfParams; i++) {
+    for (var i = 0; i < paramCount; i++) {
       var size = setSize
-      if(i >= this.numberOfParams - 1){
+      if(i >= paramCount - 1){
         size = finalSetSize
       }
       var currentSet = this.params[i]
-      console.log("CURRENT SET "+currentSet)
       switch(currentSet) {
         case this.uppercase:
           master+=this.getUppercase(size)
@@ -132,6 +170,14 @@ class Complexity{
           break
       }
 
+    }
+
+    //Shuffle string
+    master=master.shuffle()
+
+    //Slice string and insert rude word
+    if (this.hasRude){
+      master = master.slice(0, Math.floor(splitSize/2)) + rudeWord + master.slice(Math.floor(splitSize/2));
     }
 
     return master
@@ -195,5 +241,5 @@ String.prototype.shuffle = function () {
 }
 
 
-c =  new Complexity(20,true,true,true,false)
-console.log(c.getMasterString().shuffle())
+c =  new Complexity(20,true,true,true,true,false)
+console.log(c.generate())
