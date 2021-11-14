@@ -67,7 +67,7 @@ class Complexity{
     this.symbols = new Parameter(",./@()[]&%£$");
 
     //Get number of parameters for this complexity
-    this.params = this.filterParamaters();
+    this.params = this.filterParamaters().sort(() => Math.random() - 0.5);
     this.numberOfParams=this.params.length
 
   }
@@ -96,9 +96,6 @@ class Complexity{
 
   }
 
-  shuffle(){
-    return this.params.sort(() => Math.random() - 0.5)
-  }
 
   /**
    * Will generate a long list
@@ -107,7 +104,6 @@ class Complexity{
    * not mixed yet
    */
   getMasterString(){
-
     var master = "";
     //Calculate set size for each param
     let setSize = Math.floor(this.length/this.numberOfParams);  
@@ -179,16 +175,25 @@ class Complexity{
 
 }
 
-/**
- * The password class is 
- * where the passwords are 
- * created given their complexity
- */
-class Password{
-  constructor(complexity){
 
+/**
+ * Custom shuffle method to 
+ * scramble a string into a random
+ * order
+ */
+String.prototype.shuffle = function () {
+  var a = this.split(""),
+    n = a.length;
+
+  for(var i = n - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
   }
+  return a.join("");
 }
 
-c =  new Complexity(20,true,true,true,true)
-console.log(c.getMasterString())
+
+c =  new Complexity(20,true,true,true,false)
+console.log(c.getMasterString().shuffle())
