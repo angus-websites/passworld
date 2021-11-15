@@ -184,6 +184,20 @@ class Complexity{
   }
 
   /**
+   * Will rank the password on a scale
+   * of 1-3 1 being weak and 3 being strong
+   */
+  rank(password){
+    if(password.length < 5){
+      return 1
+    }else if(password.length > 10){
+      return 3
+    }else{
+      return 2
+    }
+  }
+
+  /**
    * Get a random string
    * of letters
    * @param  {int} length [length of random string]
@@ -303,6 +317,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function update(length){
     c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),true,isChecked($symCheck),isChecked($rudeCheck))
     password = c.generate()
+    //Show strength etc
+    showPasswordResults(c,password)
     $passwordLabel.text(password)
   }
 
@@ -312,6 +328,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
    */
   function isChecked(checkbox){
     return checkbox.is(':checked')
+  }
+
+  /**
+   * Will remove all classes from an element
+   * in the classList and replace with the variable
+   * replaceWith
+   */
+  function replaceClass(element,classList,replaceWith){
+    for (var i = 0; i < classList.length; i++) {
+       element.removeClass(classList[i])
+     } 
+     element.addClass(replaceWith)
+  }
+
+  /**
+   * Will rank the given password and 
+   * display results and time estimates etc
+   */
+  function showPasswordResults(complexity,password){
+
+    classList = ["border-weak","border-medium","border-strong"]
+    strength = complexity.rank(password)
+    replaceClass($("#strengthStrip"),classList,classList[strength-1])
+
+
   }
 
 });
