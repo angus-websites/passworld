@@ -19,7 +19,7 @@
         <!--Password view-->
         <div class="flex-1">
           <div class="">
-            <p class="md:text-3xl text-xl sm:text-2xl monoFont">
+            <p id="passwordLabel" class="md:text-3xl text-xl sm:text-2xl monoFont">
               adashdgasdnjnj1232'
             </p>
           </div>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <!--Strength & Time section-->
-      <div class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-mainorange">
+      <div class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-medium">
         <p class="md:text-base text-center text-sm">It would take <b>15 years</b> to crack this password</p>
       </div>
 
@@ -48,39 +48,40 @@
         <!--Length Slider-->
         <div class="">
           <!--Length label-->
-          <label for="lengthSlider" id="lengthLabel" class="text-lg">Length: 25</label>
+          <label for="lengthSlider" class="text-lg">Length: <span id="lengthLabel"></span></label>
           <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="slider mt-4" style="width: 100%">
         </div>
         <!--Checkboxes-->
-        <div class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
+        <div id="checkParent" class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
           <!--Numbers-->
           <div class="flex-initial">
-            <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
-              <span class="ml-4 text-lg">Numbers</span>
+            <label class="cursor-pointer label" aria-label="Include Numbers in password">
+              <input id="numCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <span class="mx-4 label-text">Numbers</span>
             </label>
           </div>
           <!--Letters-->
           <div class="flex-initial">
-            <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
-              <span class="ml-4 text-lg">Letters</span>
+            <label class="cursor-pointer label" aria-label="Include Letters in password">
+              <input id="lettCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <span class="mx-4 label-text">Letters</span>
             </label>
           </div>
           <!--Symbols-->
           <div class="flex-initial">
-            <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
-              <span class="ml-4 text-lg">Symbols</span>
+            <label class="cursor-pointer label" aria-label="Include Symbols in password">
+              <input id="symCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <span class="mx-4 label-text">Symbols</span>
             </label>
           </div>
           <!--Rude-->
           <div class="flex-initial">
-            <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox h-7 w-7 rounded-lg text-mainorange bg-gray-300 border-0">
-              <span class="ml-4 text-lg">Rude</span>
+            <label class="cursor-pointer label" aria-label="Include rude words in password">
+              <input id="rudeCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <span class="mx-4 label-text">Rude</span>
             </label>
           </div>
+
         </div>
       </div>  
     </div>

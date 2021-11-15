@@ -241,5 +241,77 @@ String.prototype.shuffle = function () {
 }
 
 
-c =  new Complexity(20,true,true,true,true,false)
-console.log(c.generate())
+//Wait for DOM to load
+document.addEventListener('DOMContentLoaded', (event) => {
+
+  //Slider
+  const $slider = $("#lengthSlider");
+  const $sliderLabel = $("#lengthLabel")
+  //Label
+  const $passwordLabel=$("#passwordLabel");
+  const $lengthLabel = $("#lengthLabel")
+  //Checkboxes
+  const $numCheck = $("#numCheck");
+  const $lettCheck = $("#lettCheck");
+  const $symCheck = $("#symCheck");
+  const $rudeCheck = $("#rudeCheck");
+
+  const $checkParent =$("#checkParent input[type='checkbox']");
+  const $checkParentActive=$("#checkParent input[type='checkbox']:checked")
+
+  //When the slider is moved
+  $slider.on("input change", function() {
+    getSliderAndUpdate(this.value)
+  });
+
+  //When a checkbox is selected
+  $checkParent.change(function() {
+
+    console.log("Checkbox clicked state is: "+this.checked)
+    //If it's currently disabled then simply enable it
+    if (this.checked){
+      $(this).prop("checked", true);
+      //Regenerate when enabled again
+      getSliderAndUpdate();
+    }
+    //Check at least 2 checkboxes are selected
+    else if ($checkParentActive.length >= 1){
+      //Disable the checkbox
+      $(this).prop("checked", false);
+      //Regenerate when disabled
+      getSliderAndUpdate();
+
+    }
+    else{
+      //Force this checkbox to be enabled
+      $(this).prop("checked", true);
+    }  
+
+  });
+
+
+
+  function getSliderAndUpdate(val=document.getElementById("lengthSlider").value){
+    //Update label
+    $lengthLabel.text(val)
+    update(val);
+  }
+
+  /**
+   * Will generate a new password and display
+   */
+  function update(length){
+    c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),true,isChecked($symCheck),isChecked($rudeCheck))
+    password = c.generate()
+    $passwordLabel.text(password)
+  }
+
+  /**
+   * Check if the given checkbox
+   * has been selected
+   */
+  function isChecked(checkbox){
+    return checkbox.is(':checked')
+  }
+
+});
