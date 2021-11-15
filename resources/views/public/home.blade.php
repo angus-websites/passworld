@@ -56,21 +56,21 @@
           <!--Numbers-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Numbers in password">
-              <input id="numCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <input id="numCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
               <span class="mx-4 label-text">Numbers</span>
             </label>
           </div>
           <!--Letters-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Letters in password">
-              <input id="lettCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <input id="lettCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
               <span class="mx-4 label-text">Letters</span>
             </label>
           </div>
           <!--Symbols-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Symbols in password">
-              <input id="symCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <input id="symCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
               <span class="mx-4 label-text">Symbols</span>
             </label>
           </div>
@@ -78,7 +78,9 @@
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include rude words in password">
               <input id="rudeCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
-              <span class="mx-4 label-text">Rude</span>
+              <div data-tip="Insert a rude word into the middle of your password" class="tooltip">
+                <span class="mx-4 label-text">Rude</span>
+              </div>
             </label>
           </div>
 

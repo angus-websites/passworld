@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const $rudeCheck = $("#rudeCheck");
 
   const $checkParent ="#checkParent input[type='checkbox']";
-
+  const $checkParentActive = "#checkParent input[type='checkbox']:checked.core"
   const $strengthSVG = "#strengthSVG";
 
   //When the slider is moved
@@ -299,8 +299,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   //When a checkbox is selected
   $($checkParent).change(function() {
-
-    console.log("Checkbox clicked state is: "+this.checked)
     //If it's currently disabled then simply enable it
     if (this.checked){
       $(this).prop("checked", true);
@@ -308,7 +306,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       getSliderAndUpdate();
     }
     //Check at least 2 checkboxes are selected
-    else if ($($checkParent+":checked").length >= 1){
+    else if ($($checkParentActive).length >= 1){
       //Disable the checkbox
       $(this).prop("checked", false);
       //Regenerate when disabled
@@ -376,6 +374,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //Update the colour of the svg
     classList = ["text-weak","text-medium","text-strong"]
     replaceClass($($strengthSVG),classList,classList[strength-1])
+
+    //Update the time estimate here
+
   }
 
 });
