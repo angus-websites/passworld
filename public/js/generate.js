@@ -99,6 +99,12 @@ class Complexity{
     this.params = this.filterParamaters().sort(() => Math.random() - 0.5);
     this.numberOfParams=this.params.length
 
+    //Store generated password
+    this.password = ""
+
+    //Generate on load
+    this.generate()
+
   }
 
   /**
@@ -180,21 +186,31 @@ class Complexity{
       master = master.slice(0, Math.floor(splitSize/2)) + rudeWord + master.slice(Math.floor(splitSize/2));
     }
 
-    return master
+    //Save password to class
+    this.password = master
   }
 
   /**
    * Will rank the password on a scale
    * of 1-3 1 being weak and 3 being strong
    */
-  rank(password){
-    if(password.length < 5){
+  rank(){
+    if(this.password.length < 5){
       return 1
-    }else if(password.length > 10){
+    }else if(this.password.length > 10){
       return 3
     }else{
       return 2
     }
+  }
+
+  /**
+   * Estimate the amount of time
+   * it would take to crack the password
+   * in minutes
+   */
+  estimate(){
+    return 1;
   }
 
   /**
@@ -261,17 +277,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
   //Slider
   const $slider = $("#lengthSlider");
   const $sliderLabel = $("#lengthLabel")
+
   //Label
   const $passwordLabel=$("#passwordLabel");
   const $lengthLabel = $("#lengthLabel")
+
   //Checkboxes
   const $numCheck = $("#numCheck");
   const $lettCheck = $("#lettCheck");
   const $symCheck = $("#symCheck");
   const $rudeCheck = $("#rudeCheck");
 
-  const $checkParent =$("#checkParent input[type='checkbox']");
-  const $checkParentActive=$("#checkParent input[type='checkbox']:checked")
+  const $checkParent ="#checkParent input[type='checkbox']";
+
+  const $strengthSVG = "#strengthSVG";
 
   //When the slider is moved
   $slider.on("input change", function() {
@@ -279,7 +298,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   //When a checkbox is selected
-  $checkParent.change(function() {
+  $($checkParent).change(function() {
 
     console.log("Checkbox clicked state is: "+this.checked)
     //If it's currently disabled then simply enable it
@@ -289,7 +308,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       getSliderAndUpdate();
     }
     //Check at least 2 checkboxes are selected
-    else if ($checkParentActive.length >= 1){
+    else if ($($checkParent+":checked").length >= 1){
       //Disable the checkbox
       $(this).prop("checked", false);
       //Regenerate when disabled
@@ -315,10 +334,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
    * Will generate a new password and display
    */
   function update(length){
-    c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),true,isChecked($symCheck),isChecked($rudeCheck))
-    password = c.generate()
+    c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),isChecked($lettCheck),isChecked($symCheck),isChecked($rudeCheck))
+    c.generate()
+    password = c.password
     //Show strength etc
-    showPasswordResults(c,password)
+    showPasswordResults(c)
     $passwordLabel.text(password)
   }
 
@@ -346,13 +366,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
    * Will rank the given password and 
    * display results and time estimates etc
    */
-  function showPasswordResults(complexity,password){
+  function showPasswordResults(complexity){
 
-    classList = ["border-weak","border-medium","border-strong"]
-    strength = complexity.rank(password)
+    //Update the strength strip colour
+    var classList = ["border-weak","border-medium","border-strong"]
+    var strength = complexity.rank()
     replaceClass($("#strengthStrip"),classList,classList[strength-1])
 
-
+    //Update the colour of the svg
+    classList = ["text-weak","text-medium","text-strong"]
+    replaceClass($($strengthSVG),classList,classList[strength-1])
   }
 
 });
