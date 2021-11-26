@@ -31,4 +31,12 @@ class Wordtype extends Model
     public function substitutePhrase($word){
         echo "Hello";
     }
+
+    /**
+     * Get a random word
+     * for this wordtype
+     */
+    public function randomWord(){
+        return $this->words()->inRandomOrder()->first()->content;
+    }
 }

@@ -32,6 +32,23 @@
               <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
           </form>
       </div>
+
+      <div class="my-20">
+        <!--Examples-->
+        <h2 class="text-xl tracking-tight font-extrabold text-gray-800 sm:text-2xl md:text-4xl">
+          <span class="block xl:inline">Words explained</span>
+        </h2>
+
+        <!--Types-->
+        @foreach($types as $type)
+          <div class="mt-10">
+            <h3 class="font-bold text-gray-800 text-xl">{{$type->name}}</h3>
+            <p class="mt-3 text-base text-md">{{$type->description}}, an example is <b>{{$type->randomWord()}}</b></p>  
+          </div>
+        @endforeach
+
+      </div>
+
     </div>
         
   </div>

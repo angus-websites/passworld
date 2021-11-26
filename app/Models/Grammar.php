@@ -9,8 +9,8 @@ class Grammar extends Model
 {
     use HasFactory;
 
-    public static function randomPhrase($numberOfWords=3,$seperator="_"){
-        return Grammar::inRandomOrder()->first()->phrase();
+    public static function randomPhrase($seperator="_"){
+        return Grammar::inRandomOrder()->first()->phrase($seperator);
     }
 
     /**
