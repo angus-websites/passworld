@@ -116,7 +116,11 @@ module.exports = {
                'warning' : '#ff9900',           /* Warning */
                'error' : '#ff5724',             /* Error */
             },
+
           },
+          'dark',
+          'dracula',
+          'light',
         ],
       },
 

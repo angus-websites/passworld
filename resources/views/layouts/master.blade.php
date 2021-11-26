@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="passworld">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
   <!--Angus was here 2k21-->
   <head>
     <title>

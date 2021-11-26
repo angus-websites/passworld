@@ -37,7 +37,7 @@ Route::resource('common', CommonController::class);
 Route::resource('words', WordController::class);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('portal.index');
 })->middleware(['auth'])->name('dashboard');
 
 //Ajax
