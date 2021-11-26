@@ -1,6 +1,5 @@
-
-<!--New Navbar-->
-<div x-data="{ open: false }" class="bg-neutral-focus">
+<!--Navbar-->
+<nav x-data="{ open: false }" class="bg-neutral-focus">
   <nav class="navbar shadow-lg  text-neutral-content">
 
     <!--Top navbar-->
@@ -71,9 +70,7 @@
         </button>
       </div>
     </div>
-
   </nav>
-
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full">
     <div class="pt-2 pb-3 space-y-1">
@@ -129,5 +126,5 @@
       </div>
     @endif
   </div>
-</div>
+</nav>
 

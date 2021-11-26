@@ -119,7 +119,7 @@ module.exports = {
 
           },
           'dark',
-          'dracula',
+          'emerald',
           'light',
         ],
       },
