@@ -72,21 +72,21 @@
     </div>
   </nav>
   <!-- Responsive Navigation Menu -->
-  <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full">
-    <div class="pt-2 pb-3 space-y-1">
-      <x-responsive-nav-link href="/" :active="request()->routeIs('index')">
+  <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full bg-base-100 text-base-content">
+    <ul class="menu p-4 overflow-y-auto">
+      <x-responsive-nav-link href="/" :active="Request::is('/')">
         {{ __('Generate') }}
       </x-responsive-nav-link>
-      <x-responsive-nav-link href="/projects" :active="request()->routeIs('assword')">
+      <x-responsive-nav-link href="/ass" :active="Request::is('ass')">
         {{ __('A$$word') }}
       </x-responsive-nav-link>
-      <x-responsive-nav-link href="/contact" :active="request()->routeIs('common')">
-        {{ __('Common Passwords') }}
+      <x-responsive-nav-link href="/common" :active="Request::is('common')">
+        {{ __('Common passwords') }}
       </x-responsive-nav-link>
-    </div>
+    </ul>
 
     @if (Auth::check())
-      <!-- Responsive Settings Options -->
+      <!--User info-->
       <div class="pt-4 pb-1 border-t border-gray-200">
         <div class="flex items-center px-4">
           <div class="flex-shrink-0">
@@ -94,36 +94,32 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
-            <div class="ml-3">
-              <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-              <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+          <div class="ml-3">
+            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+          </div>
         </div> 
+      </div>
 
-        <div class="mt-3 space-y-1">
-          <!--Other links-->
-          <x-responsive-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
-          </x-responsive-nav-link>
-
-          <!-- Authentication -->
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <x-responsive-nav-link :href="route('logout')"
-            onclick="event.preventDefault();
-            this.closest('form').submit();">
+      <ul class="menu p-4 overflow-y-auto">
+        <!--Dashboard link-->
+        <x-responsive-nav-link href="/dashboard" :active="Request::is('dashboard')">
+          {{ __('Dashboard') }}
+        </x-responsive-nav-link>
+        <!--Logout link-->
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
             {{ __('Log out') }}
           </x-responsive-nav-link>
         </form>
-      </div>
+      </ul>
     @else
-      <div class="pt-2 border-t border-gray-200">
-        <!--Other links-->
-        <x-responsive-nav-link href="/login" :active="request()->routeIs('login')">
+      <ul class="menu p-4 overflow-y-auto border-t border-gray-200">
+        <x-responsive-nav-link href="/login" :active="Request::is('login')">
           {{ __('Login') }}
         </x-responsive-nav-link>
-      </div>
+      </ul>
     @endif
   </div>
 </nav>
