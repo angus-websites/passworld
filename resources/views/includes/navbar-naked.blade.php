@@ -1,12 +1,10 @@
-<nav x-data="{ open: false }"  class="bg-gray-800">
-  <div class="container mx-auto px-6 md:px-3 ">
-    <div class="relative flex items-center justify-between h-16">
-      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0 flex items-center">
-          <img class="block lg:hidden h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
-          <img class="hidden lg:block h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
-        </div>
-      </div>
+<nav class="navbar shadow-lg text-neutral-content bg-neutral-focus">
+  <!--Top navbar-->
+  <div class="container mx-auto px-6 md:px-3">
+    <!--Logo on navbar-->
+    <div class="px-2 mx-2 navbar-start">
+      <img class="block lg:hidden h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
+      <img class="hidden lg:block h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
     </div>
   </div>
 </nav>
