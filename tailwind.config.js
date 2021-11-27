@@ -117,10 +117,7 @@ module.exports = {
                'error' : '#ff5724',             /* Error */
             },
 
-          },
-          'dark',
-          'emerald',
-          'light',
+          }
         ],
       },
 

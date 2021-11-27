@@ -26,19 +26,17 @@
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
-                <x-input id="password" class="block mt-1 w-full"
+                <x-input id="password" class="w-full"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-0 bg-gray-300 text-mainpink shadow-sm focus:border-mainpink focus:ring focus:ring-mainpink-light focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+            <label class="cursor-pointer block justify-start space-x-3 mt-4">
+                <input id="remember_me" type="checkbox" class="checkbox checkbox-sm" name="remember">
+                <span class="label-text">Remember me</span> 
+            </label>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))

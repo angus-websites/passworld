@@ -13,8 +13,8 @@
               @csrf
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">
-                <label class="block mb-1" for="wordType">Type of word</label>
-                <select required id="wordType" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input" name="wordType">
+                <label class="label" for="wordType">Type of word</label>
+                <select required id="wordType" class="select select-bordered w-full max-w-xs" name="wordType">
                   @foreach($types as $type)
                     <option>{{$type->name}}</option>
                     @endforeach
@@ -23,13 +23,15 @@
 
               <!--Word-->
               <div class="mb-6">
-                <label class="block mb-1" for="wordInput">Your word</label>
-                <input required class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="wordInput" name="word" autocomplete="off"/>
+                <label class="label" for="wordInput">Your word</label>
+                <x-input id="wordInput" class="w-full"
+                                type="text"
+                                name="word"
+                                required autocomplete="off" />
+
               </div>
-
-
               <!--Submit button-->
-              <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+              <button type="submit" class="btn btn-success">Submit</button>
           </form>
       </div>
 
