@@ -10,12 +10,12 @@
     <div>
       <!--Form-->
       <div class="max-w-xl mt-10 sm:mx-auto lg:mx-0">
-          <form method="POST" action="{{{ route('words.suggestSave') }}}">
+          <form method="POST"  action="{{{ route('words.suggestSave') }}}">
               @csrf
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">
                 <label class="label" for="wordType">Type of word</label>
-                <select required id="wordType" class="select select-bordered w-full max-w-xs" name="wordType">
+                <select required id="wordType" class="select select-bordered w-full" name="wordType">
                   @foreach($types as $type)
                     <option>{{$type->name}}</option>
                     @endforeach

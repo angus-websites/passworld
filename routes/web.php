@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\AssController;
-
+use App\Http\Controllers\SuggestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +35,9 @@ Route::resource('common', CommonController::class);
 
 //Words resource controller
 Route::resource('words', WordController::class);
+
+//Suggestion controller
+Route::resource('suggestions', SuggestionController::class);
 
 Route::get('/dashboard', function () {
     return view('portal.index');
