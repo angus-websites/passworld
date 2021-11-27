@@ -40,12 +40,27 @@
         </h2>
 
         <!--Types-->
-        @foreach($types as $type)
-          <div class="mt-10">
-            <h3 class="font-bold text-gray-800 text-xl">{{$type->name}}</h3>
-            <p class="mt-3 text-base text-md">{{$type->description}}, an example is <b>{{$type->randomWord()}}</b></p>  
-          </div>
-        @endforeach
+        <div class="overflow-x-auto mt-10">
+          <table class="table w-full">
+            <thead>
+              <tr>
+                <th>Word type</th> 
+                <th>Definition</th> 
+                <th>Example</th>
+              </tr>
+            </thead> 
+            <tbody>
+              @foreach($types as $type)
+                <tr>
+                  <td>{{$type->name}}</td> 
+                  <td>{{$type->description}}</td> 
+                  <td><b>{{$type->randomWord()}}</b></td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+
 
       </div>
 
