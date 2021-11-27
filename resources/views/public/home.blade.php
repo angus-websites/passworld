@@ -49,7 +49,7 @@
         <div class="">
           <!--Length label-->
           <label for="lengthSlider" class="text-lg">Length: <span id="lengthLabel"></span></label>
-          <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="slider mt-4" style="width: 100%">
+          <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="range range-lg range-secondary w-100 mt-3">
         </div>
         <!--Checkboxes-->
         <div id="checkParent" class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
