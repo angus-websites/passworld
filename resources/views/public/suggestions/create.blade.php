@@ -10,7 +10,7 @@
     <div>
       <!--Form-->
       <div class="max-w-xl mt-10 sm:mx-auto lg:mx-0">
-          <form method="POST"  action="{{{ route('words.suggestSave') }}}">
+          <form method="POST"  action="{{{ route('suggestions.store') }}}">
               @csrf
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">

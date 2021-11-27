@@ -26,8 +26,8 @@ Route::get('/', function () {
 Route::get('/ass', [AssController::class, 'index']);
 
 //Word submit - Show the screen
-Route::get('/words/suggest', [WordController::class, 'showSuggest']);
-Route::post('/words/suggest', [WordController::class, 'saveSuggest'])->name("words.suggestSave");
+// Route::get('/words/suggest', [WordController::class, 'showSuggest']);
+// Route::post('/words/suggest', [WordController::class, 'saveSuggest'])->name("words.suggestSave");
 
 
 //Common password controller

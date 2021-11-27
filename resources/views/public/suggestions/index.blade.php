@@ -22,9 +22,15 @@
               <td>{{$suggestion->wordType()->name}}</td> 
               <td>
                 <div class="btn-group">
-                  <button class="btn btn-error btn-sm">Delete</button> 
-                  <button class="btn btn-sm">Edit</button> 
-                  <button class="btn btn-success btn-sm">Approve</button> 
+                  @can("delete",$suggestion)
+                    <button class="btn btn-error btn-sm">Delete</button>
+                  @endcan
+                  @can("update",$suggestion)
+                    <button class="btn btn-sm">Edit</button> 
+                  @endcan
+                  @can("approve",$suggestion)
+                    <button class="btn btn-success btn-sm">Approve</button> 
+                  @endcan
                 </div> 
               </td>
             </tr>

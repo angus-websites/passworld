@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Suggestion;
 use Illuminate\Http\Request;
+use App\Models\Wordtype;
 
 
 class SuggestionController extends Controller
 {
+
+    public function __construct(){
+        $this->authorizeResource(Suggestion::class);  
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +26,15 @@ class SuggestionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Provides a screen for users
+     * to submit a new word to the database
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $types = Wordtype::all();
+        return view('public.suggestions.create',["types" => $types]);
     }
 
     /**
@@ -37,7 +45,23 @@ class SuggestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation
+        $validated = $request->validate([
+          'wordType' => 'required|exists:wordtypes,name',
+          'word' => 'required|unique:suggestions,content|unique:words,content',
+        ]);
+
+        //Fetch the word type
+        $wordTypeID=Wordtype::where('name', '=', $request->wordType)->firstOrFail()->id;
+
+        //Save the suggestion to the suggestions table here
+        $suggestion = new Suggestion;
+        $suggestion->content = $request->word;
+        $suggestion->wordtype_id = $wordTypeID;
+        $suggestion->save();
+
+        //Return with success message
+        return redirect()->back()->with('success', 'Your word has been sent for approval!');
     }
 
     /**
