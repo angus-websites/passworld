@@ -25,11 +25,6 @@ Route::get('/', function () {
 //Assword
 Route::get('/ass', [AssController::class, 'index']);
 
-//Word submit - Show the screen
-// Route::get('/words/suggest', [WordController::class, 'showSuggest']);
-// Route::post('/words/suggest', [WordController::class, 'saveSuggest'])->name("words.suggestSave");
-
-
 //Common password controller
 Route::resource('common', CommonController::class);
 
@@ -38,6 +33,8 @@ Route::resource('words', WordController::class);
 
 //Suggestion controller
 Route::resource('suggestions', SuggestionController::class);
+Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'approve'])->name('suggestions.approve');
+
 
 Route::get('/dashboard', function () {
     return view('portal.index');

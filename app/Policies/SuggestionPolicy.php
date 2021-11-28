@@ -12,6 +12,22 @@ class SuggestionPolicy
     use HandlesAuthorization;
 
     /**
+     * Perform pre-authorization checks.
+     *
+     * @param  \App\Models\User  $user
+     * @param  string  $ability
+     * @return void|bool
+     */
+    public function before(User $user, $ability)
+    {
+        if ($user->is_admin()) {
+            return true;
+        }
+    }
+
+
+
+    /**
      * Determine whether the user can approve a suggestion.
      *
      * @param  \App\Models\User  $user
@@ -22,7 +38,7 @@ class SuggestionPolicy
     {
         return $user->is_admin()
             ? Response::allow()
-            : Response::deny("You cannot view word suggestions");
+            : Response::deny("You cannot approve suggestions");
     }
 
 

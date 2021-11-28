@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Suggestion;
 use Illuminate\Http\Request;
 use App\Models\Wordtype;
+use App\Models\Word;
 
 
 class SuggestionController extends Controller
@@ -13,6 +14,7 @@ class SuggestionController extends Controller
     public function __construct(){
         $this->authorizeResource(Suggestion::class);  
     }
+
 
     /**
      * Display a listing of the resource.
@@ -23,6 +25,30 @@ class SuggestionController extends Controller
     {
         $suggestions = Suggestion::all();
         return view('public.suggestions.index',["suggestions" => $suggestions]);
+    }
+
+    /**
+     * Approve this user suggestion and
+     * place it into the words table, then
+     * remove it from suggestions
+     */
+    public function approve(Suggestion $suggestion)
+    {
+        //Authorize this function
+        $this->authorize('approve', $suggestion);
+
+        //Create the word
+        $newWord = new Word;
+        $newWord->content=$suggestion->content;
+        $newWord->wordtype_id=$suggestion->wordtype_id;
+        $newWord->save();
+
+        //Delete this word
+        $suggestion->delete();
+
+        return redirect()->back()->with('success', 'The word has been approved');
+
+
     }
 
     /**
