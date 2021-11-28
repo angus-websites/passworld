@@ -28,14 +28,42 @@ class SuggestionController extends Controller
     }
 
     /**
-     * Approve this user suggestion and
-     * place it into the words table, then
-     * remove it from suggestions
+     * Process form data for
+     * suggestions, can either destroy
+     * or approve a list of suggestions
+     * @param  Request $request [description]
+     * @return [type]           [description]
      */
-    public function approve(Suggestion $suggestion)
+    public function process(Request $request)
+    {
+        //Approve a list
+        if (strtoupper($request->action) == "APPROVE"){
+            foreach ($request->suggestions as $suggestion_id) {
+                $this->approve(Suggestion::where('id', $suggestion_id)->firstOrFail());
+            }
+            return redirect()->back()->with('success', 'Words have been approved');
+        }
+        //Delete a list
+        elseif (strtoupper($request->action) == "DELETE"){
+            foreach ($request->suggestions as $suggestion_id) {
+                $this->delete(Suggestion::where('id', $suggestion_id)->firstOrFail());
+            }
+            return redirect()->back()->with('message', 'Words have been deleted');
+        }
+
+        return redirect()->back()->with('error', 'Invalid option selected');
+    }   
+
+    /**
+     * Approve a suggestion from the suggestion
+     * table, add it to the words table and then
+     * remove it from suggestions
+     * @param $suggestion: The suggestion to be deleted
+     */
+    protected function approve(Suggestion $suggestion)
     {
         //Authorize this function
-        $this->authorize('approve', $suggestion);
+        $this->authorize('approve', Suggestion::class);
 
         //Create the word
         $newWord = new Word;
@@ -44,11 +72,21 @@ class SuggestionController extends Controller
         $newWord->save();
 
         //Delete this word
+        $this->delete($suggestion);
+    }
+
+    /**
+     * Delete a suggestion from the suggestion
+     * table
+     * @param $suggestion: The suggestion to be deleted
+     */
+    protected function delete(Suggestion $suggestion){
+        
+        //Authorize this function
+        $this->authorize('delete', Suggestion::class);
+
+        //Delete this word
         $suggestion->delete();
-
-        return redirect()->back()->with('success', 'The word has been approved');
-
-
     }
 
     /**
@@ -122,19 +160,5 @@ class SuggestionController extends Controller
     public function update(Request $request, Suggestion $suggestion)
     {
         echo "Update route";
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Suggestion  $suggestion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Suggestion $suggestion)
-    {
-        //Delete this word
-        $suggestion->delete();
-
-        return redirect()->back()->with('message', 'The suggestion has been deleted');
     }
 }

@@ -14,10 +14,10 @@
           <span class="block xl:inline">{{$title}}</span>
         </h1>
         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">{{$subtitle}}</p>
-        <div class="mt-5">
-          <a href="/" class="text-sm font-semibold text-white py-3 px-4 rounded-lg bg-mainorange hover:bg-mainorange-darker focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">Home</a>
+        <div class="mt-5 bg-turtleorange">
+          <a href="{{ url()->previous() }}" class="btn btn-turtleorange">Back</a>
+          <a href="/" class="btn btn-accent">Home</a>
         </div>
-
       </div>
     </div>
   </div>

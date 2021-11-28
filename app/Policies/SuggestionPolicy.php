@@ -13,17 +13,18 @@ class SuggestionPolicy
 
     /**
      * Perform pre-authorization checks.
+     * UNCOMMENT WHEN READY
      *
      * @param  \App\Models\User  $user
      * @param  string  $ability
      * @return void|bool
      */
-    public function before(User $user, $ability)
-    {
-        if ($user->is_admin()) {
-            return true;
-        }
-    }
+    // public function before(User $user, $ability)
+    // {
+    //     if ($user->is_admin()) {
+    //         return true;
+    //     }
+    // }
 
 
 
@@ -34,11 +35,11 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function approve(User $user, Suggestion $suggestion)
+    public function approve(User $user)
     {
         return $user->is_admin()
             ? Response::allow()
-            : Response::deny("You cannot approve suggestions");
+            : Response::deny("You cannot approve this suggestion");
     }
 
 
@@ -62,7 +63,7 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Suggestion $suggestion)
+    public function view(User $user)
     {
         return $user->is_admin()
             ? Response::allow()
@@ -89,7 +90,7 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Suggestion $suggestion)
+    public function update(User $user)
     {
         return $user->is_admin()
             ? Response::allow()
@@ -103,7 +104,7 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Suggestion $suggestion)
+    public function delete(User $user)
     {
         return $user->is_admin()
             ? Response::allow()
@@ -117,7 +118,7 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Suggestion $suggestion)
+    public function restore(User $user)
     {
         //
     }
@@ -129,7 +130,7 @@ class SuggestionPolicy
      * @param  \App\Models\Suggestion  $suggestion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Suggestion $suggestion)
+    public function forceDelete(User $user)
     {
         //
     }

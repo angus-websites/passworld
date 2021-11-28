@@ -6,45 +6,49 @@
       <x-text.page-title title="Suggestions" subtitle="View all the current suggested words by users"/>
     </div>
 
-    <!--Table-->
-    <div class="overflow-x-auto mt-10">
-      <table class="table w-full">
-        <thead>
-          <tr>
-            <th>Suggestion</th> 
-            <th>Type</th> 
-            <th></th>
-          </tr>
-        </thead> 
-        <tbody>
-          @foreach($suggestions as $suggestion)
-            <tr>
-              <td>{{$suggestion->content}}</td> 
-              <td>{{$suggestion->wordType()->name}}</td> 
-              <td>
-                <div class="flex space-x-1">
-                  @can("delete",$suggestion)
-                    <form method="POST"  action="{{{ route('suggestions.destroy', ['suggestion' => $suggestion]) }}}">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-error btn-sm">Delete</button>
-                    </form>
-                  @endcan
-                  @can("update",$suggestion)
-                    <button class="btn btn-sm">Edit</button> 
-                  @endcan
-                  @can("approve",$suggestion)
-                    <form method="POST"  action="{{{ route('suggestions.approve', ['suggestion' => $suggestion]) }}}">
-                        @csrf
-                        <button type="submit" class="btn btn-success btn-sm">Approve</button> 
-                    </form>
-                  @endcan
-                </div> 
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
+    @if (count($suggestions) > 0)
+      <form method="POST"  action="{{{ route('suggestions.process') }}}">
+        @csrf
+        <!--Table-->
+        <div class="overflow-x-auto mt-10">
+          <table class="table w-full">
+            <thead>
+              <tr>
+                <th>Suggestion</th> 
+                <th>Type</th> 
+                <th>
+                  <button class="btn btn-ghost btn-xs btn-outline">Select all</button> 
+                </th>
+              </tr>
+            </thead> 
+            <tbody>
+              @foreach($suggestions as $suggestion)
+                <tr>
+                  <td>{{$suggestion->content}}</td> 
+                  <td>{{$suggestion->wordType()->name}}</td> 
+                  <td>
+                    <input type="checkbox" class="checkbox" name="suggestions[]" value="{{$suggestion->id}}">
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+
+        <!--Buttons-->
+        <div class="flex flex-col sm:flex-row sm:space-x-5 space-y-5 sm:space-y-0 mt-10 justify-center max-w-xs mx-auto">
+          @can('delete', App\Models\Suggestion::class)
+            <button name="action" value="delete" type="submit" class="btn btn-error btn-block">Delete</button>
+
+          @endcan
+          @can("approve", App\Models\Suggestion::class)
+            <button name="action" value="approve" type="submit" class="btn btn-success btn-block">Approve</button> 
+          @endcan
+        </div>
+      </form>
+    @else
+      <p class="mt-5">No suggestions to review</p>
+    @endif
+
   </div>
 </x-app-layout>

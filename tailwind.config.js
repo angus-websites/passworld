@@ -89,7 +89,7 @@ module.exports = {
     daisyui: {
         themes: [
           {
-            'passworld': {                          /* your theme name */
+            'passworld': {                       /* your theme name */
                'primary' : '#2AD199',           /* Primary color */
                'primary-focus' : '#55AC84',     /* Primary color - focused */
                'primary-content' : '#ffffff',   /* Foreground content color to use on primary color */
@@ -97,7 +97,7 @@ module.exports = {
                'secondary' : '#E3658F',         /* Secondary color */
                'secondary-focus' : '#BA607F',   /* Secondary color - focused */
                'secondary-content' : '#ffffff', /* Foreground content color to use on secondary color */
-
+               
                'accent' : '#37cdbe',            /* Accent color */
                'accent-focus' : '#2aa79b',      /* Accent color - focused */
                'accent-content' : '#ffffff',    /* Foreground content color to use on accent color */

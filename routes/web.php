@@ -32,7 +32,10 @@ Route::resource('common', CommonController::class);
 Route::resource('words', WordController::class);
 
 //Suggestion controller
-Route::resource('suggestions', SuggestionController::class);
+Route::resource('suggestions', SuggestionController::class, [
+    'except' => ['show','edit','update','destroy']
+]);
+Route::post('suggestions/process', [SuggestionController::class, 'process'])->name('suggestions.process');
 Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'approve'])->name('suggestions.approve');
 
 

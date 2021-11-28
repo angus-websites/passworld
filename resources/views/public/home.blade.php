@@ -49,35 +49,35 @@
         <div class="">
           <!--Length label-->
           <label for="lengthSlider" class="text-lg">Length: <span id="lengthLabel"></span></label>
-          <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="range range-lg range-secondary w-100 mt-3">
+          <input id="lengthSlider" type="range" min="3" aria-valuemin="3" max="35" aria-valuemax="35" value="10" aria-valuenow="10" class="range range-lg range-accent w-100 mt-3">
         </div>
         <!--Checkboxes-->
         <div id="checkParent" class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center sm:space-x-5 md:space-x-10 lg:space-x-16 xl:space-x-20 mx-auto text-left space-y-2 sm:space-y-0">
           <!--Numbers-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Numbers in password">
-              <input id="numCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
+              <input id="numCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg core checkbox-secondary">
               <span class="mx-4 label-text">Numbers</span>
             </label>
           </div>
           <!--Letters-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Letters in password">
-              <input id="lettCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
+              <input id="lettCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg core checkbox-secondary">
               <span class="mx-4 label-text">Letters</span>
             </label>
           </div>
           <!--Symbols-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include Symbols in password">
-              <input id="symCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent core">
+              <input id="symCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg core checkbox-secondary">
               <span class="mx-4 label-text">Symbols</span>
             </label>
           </div>
           <!--Rude-->
           <div class="flex-initial">
             <label class="cursor-pointer label" aria-label="Include rude words in password">
-              <input id="rudeCheck" type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-accent">
+              <input id="rudeCheck" type="checkbox" class="checkbox checkbox-lg checkbox-secondary">
               <div data-tip="Insert a rude word into the middle of your password" class="tooltip">
                 <span class="mx-4 label-text">Rude</span>
               </div>
