@@ -24,7 +24,11 @@
               <td>
                 <div class="flex space-x-1">
                   @can("delete",$suggestion)
-                    <button class="btn btn-error btn-sm">Delete</button>
+                    <form method="POST"  action="{{{ route('suggestions.destroy', ['suggestion' => $suggestion]) }}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-error btn-sm">Delete</button>
+                    </form>
                   @endcan
                   @can("update",$suggestion)
                     <button class="btn btn-sm">Edit</button> 

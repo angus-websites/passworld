@@ -98,7 +98,7 @@ class SuggestionController extends Controller
      */
     public function show(Suggestion $suggestion)
     {
-        //
+        echo "Show route";
     }
 
     /**
@@ -109,7 +109,7 @@ class SuggestionController extends Controller
      */
     public function edit(Suggestion $suggestion)
     {
-        //
+        echo "Edit route";
     }
 
     /**
@@ -121,7 +121,7 @@ class SuggestionController extends Controller
      */
     public function update(Request $request, Suggestion $suggestion)
     {
-        //
+        echo "Update route";
     }
 
     /**
@@ -132,6 +132,9 @@ class SuggestionController extends Controller
      */
     public function destroy(Suggestion $suggestion)
     {
-        //
+        //Delete this word
+        $suggestion->delete();
+
+        return redirect()->back()->with('message', 'The suggestion has been deleted');
     }
 }
