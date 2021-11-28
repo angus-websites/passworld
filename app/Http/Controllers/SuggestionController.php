@@ -36,6 +36,12 @@ class SuggestionController extends Controller
      */
     public function process(Request $request)
     {
+        //Validation
+        $validated = $request->validate([
+                'suggestions' => 'required|array|min:1',
+                'action' => 'required',
+        ]);
+
         //Approve a list
         if (strtoupper($request->action) == "APPROVE"){
             foreach ($request->suggestions as $suggestion_id) {
@@ -81,7 +87,7 @@ class SuggestionController extends Controller
      * @param $suggestion: The suggestion to be deleted
      */
     protected function delete(Suggestion $suggestion){
-        
+
         //Authorize this function
         $this->authorize('delete', Suggestion::class);
 

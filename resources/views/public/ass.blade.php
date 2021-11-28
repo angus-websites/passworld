@@ -35,6 +35,8 @@
         <span>Generate</span>
       </button>
     </div>
+    <!--Suggestion-->
+    <a href="{{{ route('suggestions.create') }}}" class="mt-5 btn btn-link text-info">Suggest a new word</a>
   </div>
 
   <script type="text/javascript">

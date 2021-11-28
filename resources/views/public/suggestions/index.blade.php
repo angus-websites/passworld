@@ -17,7 +17,7 @@
                 <th>Suggestion</th> 
                 <th>Type</th> 
                 <th>
-                  <button class="btn btn-ghost btn-xs btn-outline">Select all</button> 
+                  <button type="button" class="btn btn-ghost btn-xs btn-outline">Select all</button> 
                 </th>
               </tr>
             </thead> 
