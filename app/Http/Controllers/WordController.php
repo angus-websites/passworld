@@ -12,6 +12,11 @@ use App\Models\Word;
 class WordController extends Controller
 {
 
+    public function __construct(){
+        $this->authorizeResource(Word::class);  
+    }
+
+
     /**
      * Ajax function for generating
      * an assword

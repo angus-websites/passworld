@@ -29,6 +29,9 @@
                                 type="text"
                                 name="word"
                                 required autocomplete="off" />
+                <label class="label">
+                  <p class="label-text-alt">Submissions are annonymous</p> 
+                </label>
 
               </div>
               <!--Submit button-->
@@ -63,6 +66,9 @@
             </tbody>
           </table>
         </div>
+
+        <!--View all words-->
+        <a href="{{{ route('words.index') }}}" class="my-2 btn btn-link text-info px-0">View more examples</a>
 
 
       </div>

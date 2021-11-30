@@ -18,9 +18,11 @@ class WordPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
-        //
+        return true
+            ? Response::allow()
+            : Response::deny("You cannot view words");
     }
 
     /**
@@ -65,9 +67,11 @@ class WordPolicy
      * @param  \App\Models\Word  $word
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Word $word)
+    public function delete(User $user)
     {
-        //
+        return $user->is_admin()
+            ? Response::allow()
+            : Response::deny("You cannot delete words");
     }
 
     /**

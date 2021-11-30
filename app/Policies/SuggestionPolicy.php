@@ -13,7 +13,7 @@ class SuggestionPolicy
 
     /**
      * Perform pre-authorization checks.
-     * UNCOMMENT WHEN READY
+     * TODO UNCOMMENT WHEN READY
      *
      * @param  \App\Models\User  $user
      * @param  string  $ability
