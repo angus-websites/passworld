@@ -15,6 +15,6 @@ class Suggestion extends Model
      */
     public function wordType()
     {
-        return $this->belongsTo(Wordtype::class, 'wordtype_id')->first();
+        return $this->belongsTo(Wordtype::class, 'wordtype_id')->firstOrFail();
     }
 }

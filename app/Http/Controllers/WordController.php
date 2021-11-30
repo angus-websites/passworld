@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Wordtype;
 use App\Models\Grammar;
 use App\Models\Suggestion;
+use App\Models\Word;
 
 
 class WordController extends Controller
@@ -29,11 +30,8 @@ class WordController extends Controller
      */
     public function index()
     {
-        //$nouns=Wordtype::where('name', '=', 'Noun')->firstOrFail()->words()->get();
-        $types = Wordtype::all();
-        $grammars = Grammar::all();
-        $phrase = Grammar::randomPhrase();
-        return view('public.words.index',["types" => $types,"grammars" => $grammars,"phrase" => $phrase]);
+        $words = Word::orderBy("content")->get();
+        return view('public.words.index',["words" => $words]);
     }
 
     /**
@@ -43,7 +41,7 @@ class WordController extends Controller
      */
     public function create()
     {
-        //
+        echo "Create route";
     }
 
     /**
@@ -54,7 +52,7 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "Store route";
     }
 
     /**
@@ -65,7 +63,7 @@ class WordController extends Controller
      */
     public function show($id)
     {
-        //
+        echo "Show route";
     }
 
     /**
@@ -76,7 +74,7 @@ class WordController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo "Edit route";
     }
 
     /**
@@ -88,7 +86,7 @@ class WordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "Update route";
     }
 
     /**
@@ -99,6 +97,6 @@ class WordController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo "Destroy route";
     }
 }

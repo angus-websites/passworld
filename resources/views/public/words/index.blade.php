@@ -2,30 +2,30 @@
 <x-app-layout>
   <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:my-16 lg:my-20 lg:px-8 xl:my-25">
     <div class="sm:text-center lg:text-left">
-      <x-text.page-title title="All words" subtitle="The random phrase is {{$phrase}}"/>
+      <x-text.page-title title="All words" subtitle="View all the words for the A$$word generator"/>
 
-      <!--Grammars-->
-      @foreach($grammars as $grammar)
-        <div class="mt-8">
-          <h4 class="font-bold text-gray-800 text-l">New Grammar: {{$grammar->id}}</h4>
-          <p class="mt-3">{{$grammar->displayLanguage()}}</p>
-          <p class="mt-3">{{$grammar->phrase()}}</p>
-        </div>
-      @endforeach
-
-      <!--Types-->
-      @foreach($types as $type)
-        <div class="mt-10">
-          <h3 class="font-bold text-gray-800 text-xl">{{$type->name}}</h3>
-          <p class="mt-3 text-base text-md">{{$type->description}}</p>  
-          <ul class="mt-2">
-            @foreach($type->words()->get() as $word)
-              <li>{{$word->content}}</li>
+      <!--Word table-->
+      <div class="overflow-x-auto mt-10">
+        <table class="table w-full table-zebra">
+          <thead>
+            <tr>
+              <th></th> 
+              <th>Word</th> 
+              <th>Type</th> 
+            </tr>
+          </thead> 
+          <tbody>
+            @foreach($words as $counter=>$word)
+              <tr>
+                <td>{{$counter+1}}</td> 
+                <th>{{$word->content}}</th> 
+                <td><span class="tableTag badge {{$word->wordType()->name}}BG">{{$word->wordType()->name}}</span></td> 
+              </tr>
             @endforeach
-          </ul>
-        </div>
-      @endforeach
-
+          </tbody>
+        </table>
+      </div>
+    
     </div>
   </div>
 </x-app-layout>
