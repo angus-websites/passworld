@@ -30,6 +30,8 @@ Route::resource('common', CommonController::class);
 
 //Words resource controller
 Route::resource('words', WordController::class);
+Route::post('words/process', [WordController::class, 'process'])->name('words.process');
+
 
 //Suggestion controller
 Route::resource('suggestions', SuggestionController::class, [

@@ -29,6 +29,13 @@ class WordController extends Controller
     }
 
     /**
+     * Process a list of words to delete etc
+     */
+    public function process(Request $request){
+        echo "Ready to process";
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
