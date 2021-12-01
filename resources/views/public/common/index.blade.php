@@ -8,15 +8,15 @@
 
         <!--SEARCH BAR-->
         <div class="form-control my-10 flex-row space-x-3">
-          <input type="text" placeholder="Search" class="input input-bordered flex-1">
-          <button class="btn btn-square btn-error">
+          <input id="searchInput" type="text" placeholder="Search" class="input input-bordered flex-1" targetTable="commonTable">
+          <button class="btn btn-square btn-error" id="clearButton">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">   
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>                       
             </svg>
           </button>
         </div>
         <div class="overflow-x-auto">
-          <table class="table w-full table-zebra">
+          <table class="table w-full table-zebra table-fixed" id="commonTable">
             <thead>
               <tr>
                 <th></th> 
@@ -44,4 +44,5 @@
       </div>
     </div>
   </div>
+  <script src="{{ asset('js/searchTable.js') }}" defer></script>
 </x-app-layout>
