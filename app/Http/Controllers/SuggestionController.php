@@ -117,17 +117,14 @@ class SuggestionController extends Controller
     {
         //Validation
         $validated = $request->validate([
-          'wordType' => 'required|exists:wordtypes,name',
+          'wordtype_id' => 'required|exists:wordtypes,id',
           'word' => 'required|unique:suggestions,content|unique:words,content',
         ]);
-
-        //Fetch the word type
-        $wordTypeID=Wordtype::where('name', '=', $request->wordType)->firstOrFail()->id;
 
         //Save the suggestion to the suggestions table here
         $suggestion = new Suggestion;
         $suggestion->content = $request->word;
-        $suggestion->wordtype_id = $wordTypeID;
+        $suggestion->wordtype_id = $request->wordtype_id;
         $suggestion->save();
 
         //Return with success message

@@ -15,10 +15,10 @@
               <!--Word type select-->
               <div class="relative inline-block w-full text-gray-700 mb-6">
                 <label class="label" for="wordType">Type of word</label>
-                <select required id="wordType" class="select select-bordered w-full" name="wordType">
+                <select required id="wordType" class="select select-bordered w-full" name="wordtype_id">
                   <option disabled="disabled" selected="selected">Select a wordtype</option> 
                   @foreach($types as $type)
-                    <option>{{$type->name}}</option>
+                    <option value="{{$type->id}}">{{$type->name}}</option>
                   @endforeach
                 </select>
               </div>

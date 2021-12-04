@@ -1,5 +1,6 @@
 @section('title', 'Words')
 <x-app-layout>
+  @include('includes.flash')
   <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:my-16 lg:my-20 lg:px-8 xl:my-25">
     <div class="sm:text-center lg:text-left">
 
@@ -11,22 +12,24 @@
       </a> 
 
       <x-text.page-title title="{{$word->content}}" subtitle="Edit this word"/>
-      <form>
+      <form method="POST" action="{{{ route("words.update", ["word" => $word] )}}}">
+        @method("PUT")
+        @csrf
         <div class="form-control mt-10 sm:max-w-sm">
           <!--Content-->
           <label class="label">
             <span class="label-text">Content</span>
           </label> 
-          <input type="text" placeholder="username" class="input input-bordered" value="{{$word->content}}">
+          <input required type="text" name="content" class="input input-bordered" value="{{$word->content}}">
 
           <!--Word type-->
           <label class="label mt-5">
             <span class="label-text">Word type</span>
           </label>
-          <select class="select select-bordered w-full">
+          <select required class="select select-bordered w-full" name="wordtype_id">
             <option disabled="disabled">Select a wordtype</option> 
             @foreach($types as $type)
-              <option @if($word->wordtype_id == $type->id) selected="selected" @endif>
+              <option @if($word->wordtype_id == $type->id) selected="selected" @endif value="{{$type->id}}">
                 {{$type->name}}
               </option>
             @endforeach
@@ -34,7 +37,7 @@
         </div>
 
         <!--Submit-->
-        <button class="btn btn-primary mt-10">Save</button> 
+        <button type="submit" class="btn btn-primary mt-10">Save</button> 
       </form>
 
 

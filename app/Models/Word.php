@@ -9,6 +9,8 @@ class Word extends Model
 {
     use HasFactory;
 
+    //Define the fillable attributes
+    protected $fillable = ["content","wordtype_id"];
 
     /**
     * Get the word content

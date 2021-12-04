@@ -16,7 +16,6 @@ class WordController extends Controller
         $this->authorizeResource(Word::class);  
     }
 
-
     /**
      * Ajax function for generating
      * an assword
@@ -100,7 +99,16 @@ class WordController extends Controller
      */
     public function update(Request $request, Word $word)
     {
-        echo "Update route";
+        //Validate - ignoring word id on update
+        $validated = $request->validate([
+        "content" => "required|unique:words,content,$word->id",
+        "wordtype_id" => "required|exists:wordtypes,id"
+        ]);
+
+        //Update
+        $word->update($request->all());
+
+        return redirect()->back()->with("success","Word updated");
     }
 
     /**
