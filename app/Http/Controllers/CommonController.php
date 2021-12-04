@@ -89,6 +89,10 @@ class CommonController extends Controller
      */
     public function destroy(Request $request, CommonPassword $common)
     {
-        echo "Deleting ".$common->content;
+        //Delete
+        $common->delete();
+
+        //Return with flash
+        return redirect()->back()->with('message', 'Word has been deleted');
     }
 }

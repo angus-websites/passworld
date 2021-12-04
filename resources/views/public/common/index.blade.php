@@ -1,5 +1,6 @@
 @section('title', 'A$$word')
 <x-app-layout>
+  @include('includes.flash')
   <div class="my-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:my-16 lg:my-20 lg:px-8 xl:my-25">
     <div class="sm:text-center lg:text-left">
       <x-text.page-title title="Common Passwords" subtitle="View the most common passwords in use today"/>
@@ -28,10 +29,10 @@
               </tr>
             </thead> 
             <tbody>
-              @foreach($commonPasswords as $password)
+              @foreach($commonPasswords as $key => $password)
                 <tr>
                   <td>
-                    {{$password->pos}}
+                    {{$key+1}}
                   </td>
                   <td>
                     {{$password->content}}
