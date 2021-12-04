@@ -64,7 +64,7 @@ class CommonController extends Controller
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Http\Response
      */
-    public function edit(CommonPassword $commonPassword)
+    public function edit(CommonPassword $common)
     {
         //
     }
@@ -76,7 +76,7 @@ class CommonController extends Controller
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommonPassword $commonPassword)
+    public function update(Request $request, CommonPassword $common)
     {
         //
     }
@@ -87,8 +87,8 @@ class CommonController extends Controller
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, CommonPassword $commonPassword)
+    public function destroy(Request $request, CommonPassword $common)
     {
-        echo "Deleting";
+        echo "Deleting ".$common->content;
     }
 }

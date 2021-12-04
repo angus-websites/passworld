@@ -54,7 +54,7 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, CommonPassword $commonPassword)
+    public function update(User $user, CommonPassword $common)
     {
         //
     }
@@ -66,9 +66,8 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CommonPassword $commonPassword)
+    public function delete(User $user, CommonPassword $common)
     {
-        return true;
         
         return $user->is_admin()
             ? Response::allow()
@@ -82,7 +81,7 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, CommonPassword $commonPassword)
+    public function restore(User $user, CommonPassword $common)
     {
         //
     }
@@ -94,7 +93,7 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, CommonPassword $commonPassword)
+    public function forceDelete(User $user, CommonPassword $common)
     {
         //
     }
