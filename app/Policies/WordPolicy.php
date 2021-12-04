@@ -45,7 +45,9 @@ class WordPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->is_admin()
+            ? Response::allow()
+            : Response::deny("You cannot create words");
     }
 
     /**

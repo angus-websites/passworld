@@ -23,9 +23,9 @@
                 <th></th> 
                 <th>Password</th> 
                 <th>Time to crack</th>
-                {{-- @can("delete", App\Models\commonPassword::class)
+                @can("delete", App\Models\commonPassword::class)
                   <th></th>           
-                @endcan --}}
+                @endcan
               </tr>
             </thead> 
             <tbody>

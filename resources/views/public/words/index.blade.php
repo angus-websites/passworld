@@ -4,9 +4,19 @@
     <div class="sm:text-center lg:text-left">
       <x-text.page-title title="All words" subtitle="View all the words for the A$$word generator"/>
 
-      <!--View all words-->
-      <a href="{{{ route('suggestions.create') }}}" class="mt-8 btn btn-link text-info px-0">Suggest a new word</a>
+      <!--Buttons-->
+      <div class="mt-8 mb-4">
+        @can("create", App\Models\Word::class)
+        <x-button-group class="sm:max-w-xs">
+          <a href="{{{ route('words.create') }}}" class="btn btn-primary">Create word</a> 
+          <a href="{{{ route('suggestions.create') }}}" class="btn btn-link text-info">Suggest a new word</a>
+        </x-button-group>
+        @else
+          <a href="{{{ route('suggestions.create') }}}" class="btn btn-link text-info px-0">Suggest a new word</a>
+        @endcan
+      </div>
 
+      <!--View all words-->
       <form method="POST"  action="{{{ route('words.process') }}}">
         @csrf
         <!--Word table-->

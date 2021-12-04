@@ -66,7 +66,7 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, CommonPassword $common)
+    public function delete(User $user)
     {
         
         return $user->is_admin()

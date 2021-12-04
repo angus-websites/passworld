@@ -16,7 +16,7 @@
       </div>
     </div>
     <!--Buttons-->
-    <div class="mt-5 sm:mt-10 flex flex-col justify-center flex-grow xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2">
+    <x-button-group class="mt-5 sm:mt-10 justify-center">
       <!--Left button-->
       <button class="btn btn-primary btn-lg space-x-1">
         <!--Refresh Icon-->
@@ -34,7 +34,7 @@
         </svg>
         <span>Generate</span>
       </button>
-    </div>
+    </x-button-group>
     <!--Suggestion-->
     <a href="{{{ route('suggestions.create') }}}" class="mt-5 btn btn-link text-info">Suggest a new word</a>
   </div>
