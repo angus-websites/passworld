@@ -86,7 +86,9 @@ class WordController extends Controller
      */
     public function edit(Word $word)
     {
-        echo "Edit route";
+        $types = Wordtype::all();
+        return view('public.words.edit',["word" => $word, "types" => $types]);
+
     }
 
     /**
