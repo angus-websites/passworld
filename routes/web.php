@@ -26,7 +26,9 @@ Route::get('/', function () {
 Route::get('/ass', [AssController::class, 'index']);
 
 //Common password controller
-Route::resource('common', CommonController::class);
+Route::resource('common', CommonController::class, [
+    'except' => ['edit','update']
+]);
 
 //Words resource controller
 Route::resource('words', WordController::class);

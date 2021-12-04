@@ -57,7 +57,9 @@ class WordPolicy
      */
     public function update(User $user, Word $word)
     {
-        //
+        return $user->is_admin()
+            ? Response::allow()
+            : Response::deny("You cannot delete words");
     }
 
     /**

@@ -31,9 +31,9 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, CommonPassword $commonPassword)
+    public function view(User $user, CommonPassword $common)
     {
-        //
+        return true;
     }
 
     /**
@@ -66,8 +66,10 @@ class CommonPasswordPolicy
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user, CommonPassword $commonPassword)
     {
+        return true;
+        
         return $user->is_admin()
             ? Response::allow()
             : Response::deny("You cannot delete common passwords");

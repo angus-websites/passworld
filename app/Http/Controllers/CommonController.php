@@ -9,7 +9,7 @@ class CommonController extends Controller
 {
 
     public function __construct(){
-        $this->authorizeResource(CommonPassword::class);
+        $this->authorizeResource(CommonPassword::class, "common");
         
     }
 
@@ -53,9 +53,9 @@ class CommonController extends Controller
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Http\Response
      */
-    public function show(CommonPassword $commonPassword)
+    public function show(CommonPassword $common)
     {
-        //
+        echo "Viewing commmon password";
     }
 
     /**
@@ -87,8 +87,8 @@ class CommonController extends Controller
      * @param  \App\Models\CommonPassword  $commonPassword
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommonPassword $commonPassword)
+    public function destroy(Request $request, CommonPassword $commonPassword)
     {
-        //
+        echo "Deleting";
     }
 }
