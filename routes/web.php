@@ -5,6 +5,7 @@ use App\Http\Controllers\WordController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\AssController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,8 @@ Route::resource('suggestions', SuggestionController::class, [
 Route::post('suggestions/process', [SuggestionController::class, 'process'])->name('suggestions.process');
 Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'approve'])->name('suggestions.approve');
 
-
-Route::get('/dashboard', function () {
-    return view('portal.index');
-})->middleware(['auth'])->name('dashboard');
+//Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 //Ajax
 Route::get('/quick_ass', 'App\Http\Controllers\WordController@quick_ass')->middleware('ajax');
