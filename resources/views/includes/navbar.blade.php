@@ -43,6 +43,9 @@
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 text-neutral rounded-box w-52">
               <li>
                 <a href="/dashboard">Dashboard</a>
+              </li>
+              <li>
+                <a href="/account">Account</a>
               </li> 
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
