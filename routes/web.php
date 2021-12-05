@@ -5,7 +5,7 @@ use App\Http\Controllers\WordController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\AssController;
 use App\Http\Controllers\SuggestionController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PortalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +44,8 @@ Route::post('suggestions/process', [SuggestionController::class, 'process'])->na
 Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'approve'])->name('suggestions.approve');
 
 //Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [PortalController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/account', [PortalController::class, 'account'])->middleware(['auth'])->name('account');
 
 //Ajax
 Route::get('/quick_ass', 'App\Http\Controllers\WordController@quick_ass')->middleware('ajax');
