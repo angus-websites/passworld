@@ -54,7 +54,7 @@ class SuggestionController extends Controller
             foreach ($request->suggestions as $suggestion_id) {
                 $this->delete(Suggestion::where('id', $suggestion_id)->firstOrFail());
             }
-            return redirect()->back()->with('message', 'Words have been deleted');
+            return redirect()->back()->with('message', 'Suggestions have been deleted');
         }
 
         return redirect()->back()->with('error', 'Invalid option selected');

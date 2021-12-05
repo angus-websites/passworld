@@ -31,8 +31,25 @@ class WordController extends Controller
      * Process a list of words to delete etc
      */
     public function process(Request $request){
-        echo "Ready to process";
+
+        //Validation
+        $validated = $request->validate([
+            'words' => 'required|array|min:1',
+            'action' => 'required',
+        ]);
+
+        //Approve a list
+        if (strtoupper($request->action) == "DELETE"){
+            foreach ($request->words as $word_id) {
+                Word::where('id', $word_id)->firstOrFail()->delete();
+            }
+            return redirect()->back()->with('message', 'Words have been deleted');
+        }
+
+
+        return redirect()->back()->with('error', 'Invalid action');
     }
+
 
     /**
      * Display a listing of the resource.
@@ -119,6 +136,6 @@ class WordController extends Controller
      */
     public function destroy(Word $word)
     {
-        echo "Destroy route";
+        $word->delete();
     }
 }
