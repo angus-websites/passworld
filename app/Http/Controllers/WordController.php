@@ -137,5 +137,7 @@ class WordController extends Controller
     public function destroy(Word $word)
     {
         $word->delete();
+        return redirect()->route('words.index')->with("success","Word deleted");;
+
     }
 }

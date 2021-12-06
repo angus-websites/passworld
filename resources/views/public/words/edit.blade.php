@@ -37,9 +37,15 @@
         </div>
 
         <!--Submit-->
-        <button type="submit" class="btn btn-primary mt-10">Save</button> 
+        <x-button-group class="mt-10">
+          <button type="submit" class="btn btn-primary ">Save</button> 
+        </x-button-group>
       </form>
-
+      <form method="POST" class="mt-10" method="POST" action="{{{ route("words.destroy", ["word" => $word] )}}}">
+        @csrf
+        @method("delete")
+        <button class="btn btn-error btn-sm">Delete this word</button>
+      </form>
 
     </div>
   </div>

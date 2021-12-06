@@ -22,7 +22,7 @@ class PortalController extends Controller
      * Will load the account screen
      */
     public function account(){
-        return view('portal.account'); 
+        return view('portal.account', ["user" => auth()->user()]); 
     }
 
 
