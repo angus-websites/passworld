@@ -7,6 +7,7 @@ use App\Models\Wordtype;
 use App\Models\Grammar;
 use App\Models\Suggestion;
 use App\Models\Word;
+use Illuminate\Support\Facades\Validator;
 
 
 class WordController extends Controller
@@ -69,7 +70,8 @@ class WordController extends Controller
      */
     public function create()
     {
-        echo "Create route";
+        $types = Wordtype::all();
+        return view('public.words.create',["types" => $types]);
     }
 
     /**
@@ -80,7 +82,28 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Store route";
+
+        //Create a custom validator
+        $data= $request->all() + ['content_suggestions' => $request->content];
+
+        $rules = [
+            'content' => 'unique:words,content',
+            'content_suggestions' => 'unique:suggestions,content',
+            'wordtype_id' => 'required|exists:wordtypes,id'
+        ];
+
+        $messages = [
+            'content.unique' => 'This word already exists in the database',
+            'content_suggestions.unique' => 'This word is a pending suggestion',
+        ];
+
+        $validator = Validator::make($data, $rules, $messages);
+        $validator->validate();
+
+
+        //Create the new word and save
+        $word = Word::create($request->all());
+        return redirect()->route('words.edit', ['word' => $word])->with("success","Word created");
     }
 
     /**
