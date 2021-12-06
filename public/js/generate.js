@@ -8,6 +8,29 @@
 
 
 /**
+ * The DataManager class
+ * is a way of sharing data
+ * between the JS files, this
+ * is where the swear words
+ * are stored when they are fetched
+ * from the database
+ */
+class DataManager{
+  constructor(swear_words, symbols){
+    this.swear_words = swear_words
+    this.symbols = symbols
+  }
+
+  get_symbols(){
+    return this.symbols
+  }
+
+  get_swear_words(){
+    return this.swear_words
+  }
+}
+
+/**
  * The parameter class
  * is part of a password
  * i.e a number, letter or symbol
@@ -81,19 +104,20 @@ class RudeParameter{
  */
 class Complexity{
 
-  constructor(length,letters,numbers,uppercase,symbols,rude){
+  constructor(length,letters,numbers,uppercase,symbols,rude,dataManager){
     this.length = length
     this.hasLetters = letters
     this.hasNumbers = numbers
     this.hasUppercase = uppercase
     this.hasSymbols = symbols
     this.hasRude = rude
+    this.dataManager = dataManager
 
     this.letters = new Parameter("abcdefghijklmnopqrstuvwxyz");
     this.uppercase = new Parameter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     this.numbers = new Parameter("0123456789");
-    this.symbols = new Parameter(",./@()[]&%£$");
-    this.rude = new RudeParameter(["tree","mole","balls"]) //TODO get from server
+    this.symbols = new Parameter(this.dataManager.get_symbols());
+    this.rude = new RudeParameter(this.dataManager.get_swear_words()) //TODO get from server
 
     //Get number of parameters for this complexity
     this.params = this.filterParamaters().sort(() => Math.random() - 0.5);
@@ -333,116 +357,4 @@ String.prototype.shuffle = function () {
 }
 
 
-//Wait for DOM to load
-document.addEventListener('DOMContentLoaded', (event) => {
 
-  //Slider
-  const $slider = $("#lengthSlider");
-  const $sliderLabel = $("#lengthLabel")
-
-  //Label
-  const $passwordLabel=$("#passwordLabel");
-  const $lengthLabel = $("#lengthLabel")
-
-  //Checkboxes
-  const $numCheck = $("#numCheck");
-  const $lettCheck = $("#lettCheck");
-  const $symCheck = $("#symCheck");
-  const $rudeCheck = $("#rudeCheck");
-
-  const $checkParent ="#checkParent input[type='checkbox']";
-  const $checkParentActive = "#checkParent input[type='checkbox']:checked.core"
-  const $strengthSVG = "#strengthSVG";
-
-  //When the slider is moved
-  $slider.on("input change", function() {
-    getSliderAndUpdate(this.value)
-  });
-
-  //When a checkbox is selected
-  $($checkParent).change(function() {
-    //If it's currently disabled then simply enable it
-    if (this.checked){
-      $(this).prop("checked", true);
-      //Regenerate when enabled again
-      getSliderAndUpdate();
-    }
-    //Check at least 2 checkboxes are selected
-    else if ($($checkParentActive).length >= 1){
-      //Disable the checkbox
-      $(this).prop("checked", false);
-      //Regenerate when disabled
-      getSliderAndUpdate();
-
-    }
-    else{
-      //Force this checkbox to be enabled
-      $(this).prop("checked", true);
-    }  
-
-  });
-
-
-
-  function getSliderAndUpdate(val=document.getElementById("lengthSlider").value){
-    //Update label
-    $lengthLabel.text(val)
-    update(val);
-  }
-
-  /**
-   * Will generate a new password and display
-   */
-  function update(length){
-    c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),isChecked($lettCheck),isChecked($symCheck),isChecked($rudeCheck))
-    c.generate()
-    password = c.password
-    //Show strength etc
-    showPasswordResults(c)
-    $passwordLabel.text(password)
-  }
-
-  /**
-   * Check if the given checkbox
-   * has been selected
-   */
-  function isChecked(checkbox){
-    return checkbox.is(':checked')
-  }
-
-  /**
-   * Will remove all classes from an element
-   * in the classList and replace with the variable
-   * replaceWith
-   */
-  function replaceClass(element,classList,replaceWith){
-    for (var i = 0; i < classList.length; i++) {
-       element.removeClass(classList[i])
-     } 
-     element.addClass(replaceWith)
-  }
-
-  /**
-   * Will rank the given password and 
-   * display results and time estimates etc
-   */
-  function showPasswordResults(complexity){
-
-    //Update the time estimate
-    estimate = complexity.estimate()
-    $("#timeEstimate").text(convertTime(estimate))
-
-    //Update the strength strip colour
-    var classList = ["border-weak","border-medium","border-strong"]
-    var strength = rankPassword(estimate)
-    replaceClass($("#strengthStrip"),classList,classList[strength-1])
-
-    //Update the colour of the svg
-    classList = ["text-weak","text-medium","text-strong"]
-    replaceClass($($strengthSVG),classList,classList[strength-1])
-
-    
-
-  }
-
-});

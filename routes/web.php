@@ -6,6 +6,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\AssController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\PortalController;
+use App\Http\Controllers\GenerateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,8 @@ use App\Http\Controllers\PortalController;
 |
 */
 
-Route::get('/', function () {
-    return view('public.home');
-});
-
+//Home screen
+Route::get('/', [GenerateController::class, 'index']);
 
 //Assword
 Route::get('/ass', [AssController::class, 'index']);

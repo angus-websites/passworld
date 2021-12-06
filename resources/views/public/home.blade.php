@@ -90,3 +90,124 @@
   </div>
 </x-app-layout>
 <script src="{{ asset('js/generate.js') }}" defer></script>
+<script type="text/javascript">
+
+  //Wait for DOM to load
+  document.addEventListener('DOMContentLoaded', (event) => {
+
+    //Slider
+    const $slider = $("#lengthSlider");
+    const $sliderLabel = $("#lengthLabel")
+
+    //Label
+    const $passwordLabel=$("#passwordLabel");
+    const $lengthLabel = $("#lengthLabel")
+
+    //Checkboxes
+    const $numCheck = $("#numCheck");
+    const $lettCheck = $("#lettCheck");
+    const $symCheck = $("#symCheck");
+    const $rudeCheck = $("#rudeCheck");
+
+    const $checkParent ="#checkParent input[type='checkbox']";
+    const $checkParentActive = "#checkParent input[type='checkbox']:checked.core"
+    const $strengthSVG = "#strengthSVG";
+
+    var swear_words= @json($swear_words->pluck('content')->toArray());
+    var symbols = ",./@()[]&%£$"
+    var dataManager = new DataManager(swear_words, symbols);
+
+
+    //When the slider is moved
+    $slider.on("input change", function() {
+      getSliderAndUpdate(this.value)
+    });
+
+    //When a checkbox is selected
+    $($checkParent).change(function() {
+      //If it's currently disabled then simply enable it
+      if (this.checked){
+        $(this).prop("checked", true);
+        //Regenerate when enabled again
+        getSliderAndUpdate();
+      }
+      //Check at least 2 checkboxes are selected
+      else if ($($checkParentActive).length >= 1){
+        //Disable the checkbox
+        $(this).prop("checked", false);
+        //Regenerate when disabled
+        getSliderAndUpdate();
+
+      }
+      else{
+        //Force this checkbox to be enabled
+        $(this).prop("checked", true);
+      }  
+
+    });
+
+
+
+    function getSliderAndUpdate(val=document.getElementById("lengthSlider").value){
+      //Update label
+      $lengthLabel.text(val)
+      update(val);
+    }
+
+    /**
+     * Will generate a new password and display
+     */
+    function update(length){
+      c = new Complexity(length,isChecked($lettCheck),isChecked($numCheck),isChecked($lettCheck),isChecked($symCheck),isChecked($rudeCheck), dataManager)
+      c.generate()
+      password = c.password
+      //Show strength etc
+      showPasswordResults(c)
+      $passwordLabel.text(password)
+    }
+
+    /**
+     * Check if the given checkbox
+     * has been selected
+     */
+    function isChecked(checkbox){
+      return checkbox.is(':checked')
+    }
+
+    /**
+     * Will remove all classes from an element
+     * in the classList and replace with the variable
+     * replaceWith
+     */
+    function replaceClass(element,classList,replaceWith){
+      for (var i = 0; i < classList.length; i++) {
+         element.removeClass(classList[i])
+       } 
+       element.addClass(replaceWith)
+    }
+
+    /**
+     * Will rank the given password and 
+     * display results and time estimates etc
+     */
+    function showPasswordResults(complexity){
+
+      //Update the time estimate
+      estimate = complexity.estimate()
+      $("#timeEstimate").text(convertTime(estimate))
+
+      //Update the strength strip colour
+      var classList = ["border-weak","border-medium","border-strong"]
+      var strength = rankPassword(estimate)
+      replaceClass($("#strengthStrip"),classList,classList[strength-1])
+
+      //Update the colour of the svg
+      classList = ["text-weak","text-medium","text-strong"]
+      replaceClass($($strengthSVG),classList,classList[strength-1])
+
+      
+
+    }
+
+  });
+</script>
