@@ -41,7 +41,7 @@
       </div>
       <!--Strength & Time section-->
       <div id="strengthStrip" class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-medium">
-        <p class="md:text-base text-center text-sm">It would take <b>15 years</b> to crack this password</p>
+        <p class="md:text-base text-center text-sm">It would take <b id="timeEstimate">15 years</b> to crack this password</p>
       </div>
 
       <div class="shadow-ps overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">

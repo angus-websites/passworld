@@ -131,7 +131,6 @@ class Complexity{
 
   }
 
-
   /**
    * Will generate a random
    * string of characters
@@ -191,26 +190,39 @@ class Complexity{
   }
 
   /**
-   * Will rank the password on a scale
-   * of 1-3 1 being weak and 3 being strong
-   */
-  rank(){
-    if(this.password.length < 5){
-      return 1
-    }else if(this.password.length > 10){
-      return 3
-    }else{
-      return 2
-    }
-  }
-
-  /**
    * Estimate the amount of time
    * it would take to crack the password
    * in minutes
+   * @return: Time in 
    */
   estimate(){
-    return 1;
+    password = this.password
+    //Regular expressions
+    let numbersExpression = /\d/ ;
+    let lowerExpression = /[a-z]/;
+    let upperExpression = /[A-Z]/;
+    let symbolsExpression = /[\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\>\=\?\@\[\]\{\}\\\\\^\_\`\~]/;
+    //Create a dictionary
+    var regexDict=[[numbersExpression,9],[lowerExpression,26],[upperExpression,26],[symbolsExpression,30]]
+
+    //Calculate the set length
+    var setLength = 0;
+    for(var i=0; i < regexDict.length; i++) {
+      var key=regexDict[i][0];
+      var value=regexDict[i][1];
+      //Get the value (current set length)
+      if ((password.match(key))){
+        setLength+=value;
+      }
+    }
+
+    //Store constants
+    let averagePC = 1.21e-7
+    let superComputer = 1.21e-11;
+
+    //Return
+    return 0.5*Math.pow(setLength,password.length) * superComputer; 
+
   }
 
   /**
@@ -250,6 +262,56 @@ class Complexity{
   }
 
 }
+
+
+/*
+ * Will convert time in seconds to a more 
+ * readable format
+ */
+function convertTime(time){
+  //Array to convert time to a string value
+  var data=[["Seconds",60],["Minutes",3600],["Hours",86400],["Days",3.154e7],["Years",3.154e8],["Decades",3.154e9],["Centurys",3.154e10],["Milleniums",3.154e11]];
+  //Setup response
+  var response="???"
+  if (time < 1){
+    response="Less than a second"
+  }else{
+    //Loop through time stamps
+    for (var i =0; i < data.length;i++){
+      item=data[i]
+      //If the generated time is less than the current timestamp
+      if (time < item[1]){
+        var divisor = 1
+        if (i > 0){
+          divisor=data[i-1][1];
+        }
+        //Divide the generate time by the divisor and create a string
+        response = Math.round(time/divisor)+" "+item[0];
+        break;
+      }
+      response="Over 1 Million Years"
+        
+    }
+  }
+  return response;
+}
+
+/*
+ * Function will rank a generated password
+ * returns 1, 2 or 3 (3 being best)
+ */
+function rankPassword(timeToCrack){
+  //If password can be cracked in less than an hour
+  if (timeToCrack < 3600){
+    return 1
+  //If can be cracked in under a year
+  }else if(timeToCrack < 3.154e7){
+    return 2
+  }
+  //Takes over a year to crack
+  return 3
+}
+
 
 
 /**
@@ -366,16 +428,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
    */
   function showPasswordResults(complexity){
 
+    //Update the time estimate
+    estimate = complexity.estimate()
+    $("#timeEstimate").text(convertTime(estimate))
+
     //Update the strength strip colour
     var classList = ["border-weak","border-medium","border-strong"]
-    var strength = complexity.rank()
+    var strength = rankPassword(estimate)
     replaceClass($("#strengthStrip"),classList,classList[strength-1])
 
     //Update the colour of the svg
     classList = ["text-weak","text-medium","text-strong"]
     replaceClass($($strengthSVG),classList,classList[strength-1])
 
-    //Update the time estimate here
+    
 
   }
 
