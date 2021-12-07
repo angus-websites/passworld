@@ -216,5 +216,7 @@
 
     }
 
+    getSliderAndUpdate();
+
   });
 </script>

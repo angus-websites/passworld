@@ -142,8 +142,11 @@ class WordController extends Controller
         //Validate - ignoring word id on update
         $validated = $request->validate([
         "content" => "required|unique:words,content,$word->id",
-        "wordtype_id" => "required|exists:wordtypes,id"
+        "wordtype_id" => "required|exists:wordtypes,id",
         ]);
+
+        //Process profanity check
+        $request->request->add(['profanity' => $request->profanity ? 1 : 0 ?? 0]);
 
         //Update
         $word->update($request->all());

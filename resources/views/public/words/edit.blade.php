@@ -34,6 +34,13 @@
               </option>
             @endforeach
           </select>
+
+          <!-- Contains profanity -->
+          <label class="cursor-pointer block justify-start space-x-3 mt-8">
+              <input id="profanity" @if($word->profanity) checked="checked" @endif type="checkbox" class="checkbox checkbox-sm" name="profanity" value="1">
+              <span class="label-text">Profanity</span> 
+          </label>
+
         </div>
 
         <!--Submit-->

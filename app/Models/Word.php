@@ -9,14 +9,20 @@ class Word extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+            'profanity' => 'boolean',
+    ];
     //Define the fillable attributes
-    protected $fillable = ["content","wordtype_id"];
+    protected $fillable = ["content","wordtype_id","profanity"];
 
     /**
     * Get the word content
     */
     public function getContentAttribute($value)
     {
+        // if ($this->profanity){
+        //     return "*$value*";
+        // }
         return ucfirst($value);
     }
 
