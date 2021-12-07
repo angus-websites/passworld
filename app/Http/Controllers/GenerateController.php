@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Wordtype;
+use \App\Models\Word;
 
 class GenerateController extends Controller
 {
@@ -13,8 +13,7 @@ class GenerateController extends Controller
      */
     public function index()
     {   
-        $nouns = Wordtype::where('name', '=', 'Noun')->firstOrFail();
-        $swear_words = $nouns->words();
+        $swear_words = Word::where('profanity', 1);
         return view('public.home',["swear_words" => $swear_words]);
     }
 }

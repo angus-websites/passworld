@@ -78,6 +78,7 @@ class WordSeeder extends Seeder
         Word::create([
             'content' => "clitoris",
             'wordtype_id' => $noun->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "bubble",
@@ -86,6 +87,7 @@ class WordSeeder extends Seeder
         Word::create([
             'content' => "cock",
             'wordtype_id' => $noun->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "golbin",
@@ -98,6 +100,7 @@ class WordSeeder extends Seeder
         Word::create([
             'content' => "anus",
             'wordtype_id' => $noun->id,
+            'profanity' => true,
         ]);
 
         //============Verbs============
@@ -108,28 +111,34 @@ class WordSeeder extends Seeder
         Word::create([
             'content' => "piss",
             'wordtype_id' => $verb->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "spunk",
             'wordtype_id' => $verb->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "cum",
             'wordtype_id' => $verb->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "sex",
             'wordtype_id' => $verb->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "wank",
             'wordtype_id' => $verb->id,
+            'profanity' => true,
         ]);
 
         //============Participles============
         Word::create([
             'content' => "fucking",
             'wordtype_id' => $part->id,
+            'profanity' => true,
         ]);
         Word::create([
             'content' => "raging",

@@ -30,5 +30,4 @@ class Word extends Model
         return $this->belongsTo(Wordtype::class, 'wordtype_id')->firstOrFail();
     }
 
-
 }
