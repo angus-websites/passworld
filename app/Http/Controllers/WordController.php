@@ -100,6 +100,8 @@ class WordController extends Controller
         $validator = Validator::make($data, $rules, $messages);
         $validator->validate();
 
+        //Process profanity check
+        $request->request->add(['profanity' => $request->profanity ? 1 : 0 ?? 0]);
 
         //Create the new word and save
         $word = Word::create($request->all());

@@ -6,6 +6,7 @@ use App\Models\Suggestion;
 use Illuminate\Http\Request;
 use App\Models\Wordtype;
 use App\Models\Word;
+use Illuminate\Support\Facades\Validator;
 
 
 class SuggestionController extends Controller
@@ -75,6 +76,7 @@ class SuggestionController extends Controller
         $newWord = new Word;
         $newWord->content=$suggestion->content;
         $newWord->wordtype_id=$suggestion->wordtype_id;
+        $newWord->profanity=$suggestion->profanity;
         $newWord->save();
 
         //Delete this word
@@ -116,16 +118,28 @@ class SuggestionController extends Controller
     public function store(Request $request)
     {
         //Validation
-        $validated = $request->validate([
-          'wordtype_id' => 'required|exists:wordtypes,id',
-          'word' => 'required|unique:suggestions,content|unique:words,content',
-        ]);
+        $data= $request->all() + ['content_suggestions' => $request->content];
+
+        $rules = [
+            'content' => 'required|unique:words,content',
+            'content_suggestions' => 'unique:suggestions,content',
+            'wordtype_id' => 'required|exists:wordtypes,id'
+        ];
+
+        $messages = [
+            'content.required' => 'Please enter a word',
+            'content.unique' => 'This word is already in our database',
+            'content_suggestions.unique' => 'This word has already been suggested',
+        ];
+
+        $validator = Validator::make($data, $rules, $messages);
+        $validator->validate();
+
+        //Process profanity check
+        $request->request->add(['profanity' => $request->profanity ? 1 : 0 ?? 0]);
 
         //Save the suggestion to the suggestions table here
-        $suggestion = new Suggestion;
-        $suggestion->content = $request->word;
-        $suggestion->wordtype_id = $request->wordtype_id;
-        $suggestion->save();
+        Suggestion::create($request->all());
 
         //Return with success message
         return redirect()->back()->with('success', 'Your word has been sent for approval!');
@@ -150,7 +164,8 @@ class SuggestionController extends Controller
      */
     public function edit(Suggestion $suggestion)
     {
-        echo "Edit route";
+        $types = Wordtype::all();
+        return view('public.suggestions.edit',["suggestion" => $suggestion, "types" => $types]);
     }
 
     /**
@@ -163,5 +178,17 @@ class SuggestionController extends Controller
     public function update(Request $request, Suggestion $suggestion)
     {
         echo "Update route";
+    }
+
+    /**
+     * delete the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Suggestion  $suggestion
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, Suggestion $suggestion)
+    {
+        echo "Delete route";
     }
 }

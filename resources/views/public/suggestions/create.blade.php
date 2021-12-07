@@ -28,15 +28,19 @@
               <label class="label" for="wordInput">Your word</label>
               <x-input id="wordInput" class="w-full"
                               type="text"
-                              name="word"
+                              name="content"
                               required autocomplete="off" />
               <label class="label">
                 <p class="label-text-alt">Submissions are annonymous</p> 
               </label>
-
             </div>
+            <!-- Contains profanity -->
+            <label class="cursor-pointer block justify-start space-x-3 my-5">
+                <input id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity" value="1">
+                <span class="label-text">Is this a profanity?</span> 
+            </label>
             <!--Submit button-->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
       </div>
 

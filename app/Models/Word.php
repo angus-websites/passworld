@@ -9,9 +9,7 @@ class Word extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-            'profanity' => 'boolean',
-    ];
+    protected $casts = ['profanity' => 'boolean'];
     //Define the fillable attributes
     protected $fillable = ["content","wordtype_id","profanity"];
 

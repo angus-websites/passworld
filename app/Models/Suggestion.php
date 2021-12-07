@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Suggestion extends Model
 {
     use HasFactory;
+    
+    protected $casts = ['profanity' => 'boolean'];
+    //Define the fillable attributes
+    protected $fillable = ["content","wordtype_id","profanity"];
 
     /**
      * Get the type of word for 

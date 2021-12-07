@@ -16,9 +16,7 @@
               <tr>
                 <th>Suggestion</th> 
                 <th>Type</th> 
-                <th>
-                  <button type="button" class="btn btn-ghost btn-xs btn-outline">Select all</button> 
-                </th>
+                <th colspan="2">Edit</th>
               </tr>
             </thead> 
             <tbody>
@@ -29,6 +27,11 @@
                   <td>
                     <input type="checkbox" class="checkbox" name="suggestions[]" value="{{$suggestion->id}}">
                   </td>
+                  @can("update",$suggestion)
+                    <td>
+                      <a href="{{{ route('suggestions.edit', ['suggestion' => $suggestion]) }}}" class="btn btn-xs btn-ghost">Edit</a>
+                    </td>
+                  @endcan
                 </tr>
               @endforeach
             </tbody>
@@ -39,7 +42,6 @@
         <div class="flex flex-col sm:flex-row sm:space-x-5 space-y-5 sm:space-y-0 mt-10 justify-center max-w-xs mx-auto">
           @can('delete', App\Models\Suggestion::class)
             <button name="action" value="delete" type="submit" class="btn btn-error btn-block">Delete</button>
-
           @endcan
           @can("approve", App\Models\Suggestion::class)
             <button name="action" value="approve" type="submit" class="btn btn-success btn-block">Approve</button> 

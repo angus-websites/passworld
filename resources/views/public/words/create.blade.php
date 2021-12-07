@@ -26,6 +26,13 @@
               </option>
             @endforeach
           </select>
+
+          <!-- Contains profanity -->
+          <label class="cursor-pointer block justify-start space-x-3 mt-8">
+              <input id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity" value="1">
+              <span class="label-text">Is this a profanity?</span> 
+          </label>
+      
         </div>
 
         <!--Submit-->

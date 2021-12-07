@@ -37,7 +37,7 @@ Route::post('words/process', [WordController::class, 'process'])->name('words.pr
 
 //Suggestion controller
 Route::resource('suggestions', SuggestionController::class, [
-    'except' => ['show','edit','update','destroy']
+    'except' => ['show']
 ]);
 Route::post('suggestions/process', [SuggestionController::class, 'process'])->name('suggestions.process');
 Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'approve'])->name('suggestions.approve');
