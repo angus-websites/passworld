@@ -22,7 +22,6 @@
               <tr>
                 <th></th> 
                 <th>Password</th> 
-                <th>Time to crack</th>
                 @can("delete", App\Models\commonPassword::class)
                   <th></th>           
                 @endcan
@@ -36,9 +35,6 @@
                   </td>
                   <td>
                     {{$password->content}}
-                  </td>
-                  <td>
-                    Dunno
                   </td>
                   @can("delete", $password)
                     <th>

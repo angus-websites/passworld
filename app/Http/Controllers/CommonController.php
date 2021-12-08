@@ -20,8 +20,8 @@ class CommonController extends Controller
      */
     public function index()
     {
-        //Get the passwords and order by pos
-        $commonPasswords = CommonPassword::orderBy('pos')->get();
+        //Get the passwords and order by pos (limit to 500 for now)
+        $commonPasswords = CommonPassword::orderBy('pos')->take(500)->get();
         //Return the view along with the array
         return view('public.common.index',["commonPasswords" => $commonPasswords]);
     }

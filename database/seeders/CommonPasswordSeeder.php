@@ -24,27 +24,21 @@ class CommonPasswordSeeder extends Seeder
         CommonPassword::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
-        //Create the Common password
-        CommonPassword::create([
-            'content' => "1234",
-            'pos' => "1",
-        ]);
-        CommonPassword::create([
-            'content' => "Password123",
-            'pos' => "2",
-        ]);
-        CommonPassword::create([
-            'content' => "qwerty",
-            'pos' => "3",
-        ]);
-        CommonPassword::create([
-            'content' => "iloveyou",
-            'pos' => "4",
-        ]);
-        CommonPassword::create([
-            'content' => "ashley",
-            'pos' => "5",
-        ]);
+        $csvFile = fopen(base_path("csvData/common.csv"), "r");
+        $firstline = true;
+        $counter=-1;
+        while (($data = fgetcsv($csvFile",")) !== FALSE) {
+            if (!$firstline) {
+                $counter+=1;
+                CommonPassword::create([
+                    'content' => $data['0'],
+                    'pos' => $counter,
+                ]);    
+            }
+            $firstline = false;
+        }
+   
+        fclose($csvFile);
 
     }
 }

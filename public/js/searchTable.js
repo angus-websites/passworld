@@ -32,6 +32,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var $targetTable = $("#"+$searchInput.attr("targetTable")+" tbody tr");
     var $clearButton = $("#clearButton");
 
+    //Setup
+    var searchTypeTimer;                //timer identifier
+    const searchTypingInterval = 400;   //time in ms, 1 second for example
+    var $searchRunning = false;         //Avoid dupliacte searches
+    var searchBarShowing = false;
+
+
 
     function clear(){
         $searchInput.val("")
@@ -39,16 +46,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
         $searchInput.focus()
     }
 
-    //When input changes
-    $searchInput.on("keyup", function() {
-        //Get the term
-        var term = $(this).val();
-        searchTable(term,$targetTable)
-    });
 
     //When the user clicks the "Clear" button
     $clearButton.click(function(){
         clear()
-    })
+    });
+
+
+    //When user starts typing
+    $searchInput.on("keyup", function(event) {
+      clearTimeout(searchTypeTimer);
+      var thisInput = $(this);
+      //Ensure the input is not empty and user is not clicking backspace
+      if(thisInput.val().length < 1 && event.keyCode == 8){
+        clear()
+      }
+      else{
+        var searchTerm = thisInput.val();
+        searchTypeTimer = setTimeout(function() {searchTable(searchTerm, $targetTable);}, searchTypingInterval);
+      }
+      
+    });
+
 
 })
