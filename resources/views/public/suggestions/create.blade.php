@@ -21,6 +21,9 @@
                   <option value="{{$type->id}}">{{$type->name}}</option>
                 @endforeach
               </select>
+              <label class="label">
+                <p class="label-text-alt">See below for help choosing word type</p> 
+              </label>
             </div>
 
             <!--Word-->
@@ -47,7 +50,7 @@
       <div class="my-20">
         <!--Examples-->
         <h2 class="text-xl tracking-tight font-extrabold text-gray-800 sm:text-2xl md:text-4xl">
-          <span class="block xl:inline">Words explained</span>
+          <span class="block xl:inline">Types of word explained</span>
         </h2>
 
         <!--Types-->
