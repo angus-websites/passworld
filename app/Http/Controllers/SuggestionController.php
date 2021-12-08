@@ -38,10 +38,15 @@ class SuggestionController extends Controller
     public function process(Request $request)
     {
         //Validation
-        $validated = $request->validate([
+        $validated = $request->validate(
+            [
                 'suggestions' => 'required|array|min:1',
                 'action' => 'required',
-        ]);
+            ],
+            [
+                'required' => 'Please choose at least one suggestion',
+            ]
+        );
 
         //Approve a list
         if (strtoupper($request->action) == "APPROVE"){

@@ -44,6 +44,7 @@ Route::post('suggestions/{suggestion}/approve', [SuggestionController::class, 'a
 
 //Dashboard
 Route::get('/dashboard', [PortalController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::post('/account/update', [PortalController::class, 'update'])->middleware(['auth'])->name('account.update');
 Route::get('/account', [PortalController::class, 'account'])->middleware(['auth'])->name('account');
 
 //Ajax
