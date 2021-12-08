@@ -9,7 +9,9 @@
       <div class="stat place-items-center place-content-center">
         <div class="stat-title">Number of words</div> 
         <div class="stat-value">{{$wordCount}}</div> 
-
+        <div class="stat-actions">
+          <a href="{{{ route("words.index") }}}" class="btn btn-sm btn-success">View</a>
+        </div>
       </div> 
       <div class="stat place-items-center place-content-center">
         <div class="stat-title">A$$word's generated</div> 
@@ -17,7 +19,12 @@
       </div> 
       <div class="stat place-items-center place-content-center">
         <div class="stat-title">Pending suggestions</div> 
-        <div class="stat-value text-error">{{$suggestionCount}}</div> 
+        <div class="stat-value text-error">{{$suggestionCount}}</div>
+        @can('viewAny', App\Models\Suggestion::class)
+          <div class="stat-actions">
+            <a href="{{{ route("suggestions.index") }}}" class="btn btn-sm btn-success">Review</a>
+          </div>
+        @endcan
       </div>
     </div>
 

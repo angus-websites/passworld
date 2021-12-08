@@ -20,7 +20,7 @@
           <label class="label">
             <span class="label-text">Content</span>
           </label> 
-          <input required type="text" name="content" class="input input-bordered" value="{{$suggestion->content}}">
+          <input required type="text" disabled="disabled" class="input input-bordered" value="{{$suggestion->content}}">
 
           <!--Word type-->
           <label class="label mt-5">

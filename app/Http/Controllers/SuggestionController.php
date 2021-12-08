@@ -177,7 +177,17 @@ class SuggestionController extends Controller
      */
     public function update(Request $request, Suggestion $suggestion)
     {
-        echo "Update route";
+        //Validation
+        $validated = $request->validate([
+            'wordtype_id' => 'required|exists:wordtypes,id'
+        ], ["wordtype_id.required" => "Please select a word type"]);
+
+        //Process profanity check
+        $request->request->add(['profanity' => $request->profanity ? 1 : 0 ?? 0]);
+
+        //Update
+        $suggestion->update($request->all());
+        return redirect()->back()->with('success', 'Suggesition updated');
     }
 
     /**
