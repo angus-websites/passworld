@@ -1,12 +1,10 @@
-
 name: Deploy Passworld
+
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
   pull_request:
-      - main
+    branches: [ main ]
 
 jobs:
   create-deployment-artifacts:
@@ -19,4 +17,9 @@ jobs:
         run: |
           npm install
           npm run prod
+
+      - name: Configure PHP 8.0
+        php-version: 8.0
+        extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
+
 
