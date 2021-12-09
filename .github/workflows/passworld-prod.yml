@@ -1,4 +1,4 @@
-name: Passworld Tests
+name: Passworld Production
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  passworld-laravel-tests:
+  passworld-setup:
 
     runs-on: ubuntu-latest
     
@@ -20,6 +20,10 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Compile Javascript and CSS
+      run: |
+        npm install
+        npm run prod
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
