@@ -1,0 +1,22 @@
+
+name: Deploy Passworld
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+      - main
+
+jobs:
+  create-deployment-artifacts:
+    name: Create deployment artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses actions/checkout@v2
+
+      - name: Compile CSS and Javascript
+        run: |
+          npm install
+          npm run prod
+
