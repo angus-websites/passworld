@@ -27,7 +27,7 @@ class CommonPasswordSeeder extends Seeder
         $csvFile = fopen(base_path("csvData/common.csv"), "r");
         $firstline = true;
         $counter=-1;
-        while (($data = fgetcsv($csvFile",")) !== FALSE) {
+        while (($data = fgetcsv($csvFile)) !== FALSE) {
             if (!$firstline) {
                 $counter+=1;
                 CommonPassword::create([
