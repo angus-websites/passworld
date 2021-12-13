@@ -18,7 +18,7 @@
     <!--Buttons-->
     <x-button-group class="mt-5 sm:mt-10 justify-center">
       <!--Left button-->
-      <button class="btn btn-primary btn-lg space-x-1">
+      <button disabled="disabled" class="btn btn-primary btn-lg space-x-1">
         <!--Refresh Icon-->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />

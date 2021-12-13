@@ -2,7 +2,7 @@
 
 @php
 $classes = ($active ?? false)
-            ? 'border-l-4 border-indigo-400 bg-gray-100'
+            ? 'border-l-4 border-indigo-400 bg-gray-200'
             : '';
 $hrefStr = ($active ?? false)
             ? ""

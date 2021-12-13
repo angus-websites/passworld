@@ -27,7 +27,7 @@
         </div>
         <!--Copy and Refresh buttons-->
         <div class="inline-flex flex-initial">
-          <button class="btn btn-ghost btn-square" aria-label="Copy to clipboard">
+          <button disabled="disabled" class="btn btn-ghost btn-square" aria-label="Copy to clipboard">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
               <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
@@ -42,7 +42,7 @@
       </div>
       <!--Strength & Time section-->
       <div id="strengthStrip" class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-medium">
-        <p class="md:text-base text-center text-sm">It would take <b id="timeEstimate">15 years</b> to crack this password</p>
+        <p class="md:text-base text-center text-sm">Time to crack: <b id="timeEstimate">15 years</b></p>
       </div>
 
       <div class="shadow-ps overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
