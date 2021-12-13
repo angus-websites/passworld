@@ -1,7 +1,6 @@
 <!--Navbar-->
 <nav x-data="{ open: false }" class="bg-neutral-focus">
   <nav class="navbar shadow-lg  text-neutral-content">
-
     <!--Top navbar-->
     <div class="container mx-auto px-6 md:px-3">
       <!--Logo on navbar-->
@@ -72,7 +71,7 @@
     </div>
   </nav>
   <!-- Responsive Navigation Menu -->
-  <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full bg-base-100 text-base-content">
+  <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full bg-gray-50 text-base-content">
     <ul class="menu p-4 overflow-y-auto">
       <x-responsive-nav-link href="/" :active="Request::is('/')">
         {{ __('Generate') }}
