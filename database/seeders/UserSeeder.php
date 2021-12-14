@@ -30,12 +30,12 @@ class UserSeeder extends Seeder
       $adminRole=Role::where('name', '=', 'Admin')->firstOrFail();
 
       if(config('admin.admin_name')) {
-        $admin=User::firstOrCreate(
-            ['email' => config('admin.admin_email')], [
-                'name' => config('admin.admin_name'),
-                'password' => config('admin.admin_password'),
-            ]
-        );
+        $admin=User::create([
+          'name' => config('admin.admin_name'),
+          'email' => config('admin.admin_email'),
+          'password' => (config('admin.admin_password')),
+        ]);
+
         DB::table('user_roles')->insert([
           'user_id' => $admin->id,
           'role_id' => $adminRole->id,

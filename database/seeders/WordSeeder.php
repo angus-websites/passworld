@@ -90,7 +90,7 @@ class WordSeeder extends Seeder
             'profanity' => true,
         ]);
         Word::create([
-            'content' => "golbin",
+            'content' => "goblin",
             'wordtype_id' => $noun->id,
         ]);
         Word::create([

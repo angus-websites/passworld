@@ -16,7 +16,7 @@
             <div class="relative inline-block w-full text-gray-700 mb-6">
               <label class="label" for="wordType">Type of word</label>
               <select required id="wordType" class="select select-bordered w-full" name="wordtype_id">
-                <option disabled="disabled" selected="selected">Select a wordtype</option> 
+                <option disabled="disabled" selected="selected" value="">Select a wordtype</option> 
                 @foreach($types as $type)
                   <option value="{{$type->id}}">{{$type->name}}</option>
                 @endforeach
@@ -34,7 +34,7 @@
                               name="content"
                               required autocomplete="off" />
               <label class="label">
-                <p class="label-text-alt">Submissions are annonymous</p> 
+                <p class="label-text-alt">Submissions are anonymous</p> 
               </label>
             </div>
             <!-- Contains profanity -->
