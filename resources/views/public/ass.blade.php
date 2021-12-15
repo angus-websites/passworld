@@ -4,7 +4,7 @@
     <div class="sm:text-center lg:text-left">
       <x-text.page-title title="A$$word" subtitle="Generate a strong and memorable rude password"/>
       <!--View password-->
-      <div class="flex flex-row items-center mt-20 space-x-4 bg-gray-200 overflow-hidden rounded-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 ">
+      <div class="flex flex-row items-center mt-20 space-x-4 bg-white overflow-hidden rounded-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 ">
         <!--Password view-->
         <div class="flex-1">
           <div class="">

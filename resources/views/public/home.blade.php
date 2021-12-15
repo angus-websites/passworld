@@ -10,7 +10,7 @@
       <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Use one of our randomly generated passwords to keep your accounts safe and secure.</p>
 
       <!--Password view-->
-      <div class="flex flex-row items-center mt-12 space-x-4 bg-gray-200 overflow-hidden rounded-t-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 ">
+      <div id="passwordContainer" class="flex flex-row items-center mt-12 space-x-4 overflow-hidden rounded-t-lg px-4 py-5 sm:px-6 flex-col md:flex-row space-y-5 md:space-y-0 bg-strong-light">
         <!--Strength indicator-->
         <div class="flex-initial">
           <svg id="strengthSVG" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-strong" viewBox="0 0 20 20" fill="currentColor">
@@ -41,11 +41,11 @@
         </div>
       </div>
       <!--Strength & Time section-->
-      <div id="strengthStrip" class="bg-gray-300 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-medium">
+      <div id="strengthStrip" class="bg-white-50 px-4 py-1 sm:px-6 rounded-b-lg border-t-4 border-medium">
         <p class="md:text-base text-center text-sm">Time to crack: <b id="timeEstimate">15 years</b></p>
       </div>
 
-      <div class="shadow-ps overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
+      <div class="shadow-ps bg-white-50 overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
         <!--Length Slider-->
         <div class="">
           <!--Length label-->
@@ -206,8 +206,10 @@
 
       //Update the strength strip colour
       var classList = ["border-weak","border-medium","border-strong"]
+      var classListLight = ["bg-weak-light", "bg-medium-light", "bg-strong-light"]
       var strength = rankPassword(estimate)
       replaceClass($("#strengthStrip"),classList,classList[strength-1])
+      replaceClass($("#passwordContainer"),classListLight,classListLight[strength-1])
 
       //Update the colour of the svg
       classList = ["text-weak","text-medium","text-strong"]
