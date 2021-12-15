@@ -22,12 +22,17 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                seagreen: {
-                light: '#A0F9D8',
-                DEFAULT: '#17B178',
-                dark: '#259169',
-                darker: '#276F54',
+                white:{
+                    DEFAULT: "#FFFFFF",
+                    50: "#FBFBFB"
                 },
+                seagreen: {
+                    light: '#A0F9D8',
+                    DEFAULT: '#17B178',
+                    dark: '#259169',
+                    darker: '#276F54',
+                },
+
                 mainorange:{
                   light: '#FFCAA7',
                   DEFAULT: '#FF8C42',
@@ -42,19 +47,19 @@ module.exports = {
                 },
 
                 weak:{
-                   light: '#DE5176',
+                   light: '#FFF0F0',
                    DEFAULT: '#DE3E6B',
                    dark: '#B3425F', 
                    darker: '#A63D58',  
                 },
                 medium:{
-                   light: '#D5B743',
+                   light: '#FFFEF0',
                    DEFAULT: '#C9AD3F',
                    dark: '#B39A38', 
                    darker: '#A58F34',  
                 },
                 strong:{
-                   light: '#7CD859',
+                   light: '#F4FFF0',
                    DEFAULT: '#52D23D',
                    dark: '#5CA243', 
                    darker: '#54933D',  
@@ -111,7 +116,7 @@ module.exports = {
 
                'base-100' : '#ffffff',          /* Base color of page, used for blank backgrounds */
                'base-200' : '#f9fafb',          /* Base color, a little darker */
-               'base-300' : '#d1d5db',          /* Base color, even more darker */
+               'base-300' : '#e7e7e7',          /* Base color, even more darker */
                'base-content' : '#1f2937',      /* Foreground content color to use on base color */
 
                'info' : '#2094f3',              /* Info */

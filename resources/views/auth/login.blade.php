@@ -1,5 +1,4 @@
 @section('title', 'Login')
-
 <x-app-layout>
     <x-auth-card>
         <!-- Session Status -->

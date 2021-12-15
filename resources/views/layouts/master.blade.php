@@ -15,7 +15,7 @@
     @include('includes.static-tags')
 
   </head>
-  <body class="font-sans antialiased">
+  <body class="font-sans antialiased bg-base-300">
     {{ $slot }}
   </body>
 </html>
