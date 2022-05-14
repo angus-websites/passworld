@@ -2526,6 +2526,9 @@ body[dir="rtl"] .checkbox:checked,
   border-bottom-left-radius: var(--rounded-box, 1rem);
   border-bottom-right-radius: var(--rounded-box, 1rem);
 }
+.invisible{
+  visibility: hidden;
+}
 .absolute{
   position: absolute;
 }
@@ -2648,6 +2651,9 @@ body[dir="rtl"] .checkbox:checked,
 .table{
   display: table;
 }
+.grid{
+  display: grid;
+}
 .hidden{
   display: none;
 }
@@ -2749,6 +2755,9 @@ body[dir="rtl"] .checkbox:checked,
 .list-disc{
   list-style-type: disc;
 }
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
 .flex-row{
   flex-direction: row;
 }
@@ -2812,6 +2821,11 @@ body[dir="rtl"] .checkbox:checked,
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.space-y-8 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden{
   overflow: hidden;
@@ -3429,6 +3443,28 @@ body[dir="rtl"] .checkbox:checked,
   }
 }
 @media (min-width: 768px){
+  .btn.loading.btn-xl:before, .btn.loading.md\:btn-lg:before{
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  .md\:btn-lg{
+    height: 4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    min-height: 4rem;
+    font-size: 1.125rem;
+  }
+  .btn-square:where(.md\:btn-lg){
+    height: 4rem;
+    width: 4rem;
+    padding: 0px;
+  }
+  .btn-circle:where(.md\:btn-lg){
+    height: 4rem;
+    width: 4rem;
+    border-radius: 9999px;
+    padding: 0px;
+  }
   .md\:my-16{
     margin-top: 4rem;
     margin-bottom: 4rem;
