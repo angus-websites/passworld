@@ -1,4 +1,4 @@
-<div>
+<div class="sm:text-center lg:text-left">
     <h1 class="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
       <span class="block xl:inline">{{ $title }}</span>
     </h1>
