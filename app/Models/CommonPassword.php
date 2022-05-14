@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CommonPassword extends Model
 {
     use HasFactory;
+
+    protected $searchable = [
+        'content'
+    ];
 }

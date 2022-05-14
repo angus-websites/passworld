@@ -6,7 +6,6 @@
         <p class="text-white text-sm text-center sm:text-left">© {{ now()->year }} Passworld
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-
           
           <a class="text-gray-200">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">

@@ -1,8 +1,16 @@
-<x-master-layout>
+@props(['bg' => 'bg-base-300'])
+<x-master-layout bg="{{$bg}}">
+  @push("styleheets")
+    <livewire:styles />
+  @endpush
+  @push("scripts")
+    <livewire:scripts />
+  @endpush
   @include('includes.navbar')
-  <!--Main content-->
-  <main class="text-gray-600 body-font min-h-screen">
+  <main class="text-base-content body-font overflow-hidden min-h-screen">
     {{ $slot }}
   </main>
-  @include('includes.footer')
+  @section("footer")
+    @include('includes.footer')
+  @endsection
 </x-master-layout>
