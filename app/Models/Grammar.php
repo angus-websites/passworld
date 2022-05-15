@@ -22,7 +22,7 @@ class Grammar extends Model
          */
         return Grammar::whereHas('language', function (Builder $query) use($word_type) {
             $query->where('id', $word_type->id);
-        })->get();
+        });
     }
 
     /**
@@ -46,7 +46,7 @@ class Grammar extends Model
         return $str;
     }
 
-    public function phrase($seperator="_", $replacements = [], $replace_all = 0)
+    public function phrase($seperator="_", $replacements = [])
     {
         /**
          * Generate a random phrase using the language
@@ -57,12 +57,22 @@ class Grammar extends Model
         
         $str = "";
         $wordtypes = $this->language()->get();
+        $replacement_counter = array_map(function($wordtype_id) {return 0;}, $replacements);
+
         for ($x = 0; $x < count($wordtypes); $x++) {
             $wordtype=$wordtypes[$x];
 
             // Get the manually specified word if possible
-            if (array_key_exists($wordtype->id, $replacements) ){
-                $replacement = $replacements[$wordtype->id];
+            if (array_key_exists($wordtype->id, $replacements)){
+
+                // Only replace first one
+                if ($replacement_counter[$wordtype->id] == 0){
+                    $replacement = $replacements[$wordtype->id];
+                    $replacement_counter[$wordtype->id] = 1;
+                }else{
+                    $replacement = $wordtype->words()->inRandomOrder()->first()->content;
+                }
+                
             }else{
                 $replacement = $wordtype->words()->inRandomOrder()->first()->content;
             }

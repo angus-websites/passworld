@@ -4,12 +4,12 @@
     <x-text.page-title title="Suggest" subtitle="Suggest a new word to be used in the A$$word generator"/>
 
     <!-- Create component -->
-    <div class="my-10">
+    <div class="mt-10 mb-20">
       @livewire("suggestion.create")
     </div>
 
     <!--Examples-->
-    <h2 class="text-xl tracking-tight font-extrabold text-gray-800 sm:text-2xl md:text-4xl">
+    <h2 id="types_of_words" class="text-xl tracking-tight font-extrabold text-gray-800 sm:text-2xl md:text-4xl">
       <span class="block xl:inline">Types of word explained</span>
     </h2>
 
