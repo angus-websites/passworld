@@ -1,6 +1,6 @@
 <div x-data="{text_to_copy: '{{$assword}}', text_copied: false}">
 
-    <div class="grid grid-cols-1 space-y-8 mt-20">
+    <div class="grid grid-cols-1 space-y-4 mt-20">
         <!--Password view-->
         <div class="bg-white overflow-x-auto rounded-lg px-4 py-5 sm:px-6">
           <p id="assLabel" class="md:text-4xl text-2xl sm:text-3xl monoFont text-center">
@@ -8,8 +8,13 @@
           </p>
         </div>
 
+        <!-- Copied [jit] -->
+        <div :class="text_copied ? '' : 'invisible'" class="p-2 text-center my-10"> 
+            Copied to clipboard!
+        </div>
+
         <!--Buttons-->
-        <x-button-group class="mt-5 sm:mt-10 justify-center">
+        <x-button-group class="justify-center">
           <!--Left button-->
           <x-button @click.prevent="window.navigator.clipboard.writeText(text_to_copy);text_copied=true;setTimeout(() => text_copied = false, 2000)" class="md:btn-lg">
             <!--Refresh Icon-->
@@ -28,11 +33,6 @@
             <span>Generate</span>
           </x-button>
         </x-button-group>
-
-        <!-- Copied [jit] -->
-        <div :class="text_copied ? '' : 'invisible'" class="p-2 text-center my-10"> 
-            Copied to clipboard!
-        </div>
 
         <!-- Suggest new word -->
         <div>

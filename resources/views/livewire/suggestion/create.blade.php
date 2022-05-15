@@ -73,7 +73,7 @@
 
                 <!--Submit button-->
                 <div class="col-start-1">
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <x-button type="submit" class="btn-primary btn-block mt-3">Submit</x-button>
                 </div>
             </div>
         </form>

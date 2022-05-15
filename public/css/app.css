@@ -3395,6 +3395,10 @@ body[dir="rtl"] .checkbox:checked,
   font-size: 1.5rem;
   line-height: 2rem;
 }
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
 .font-medium{
   font-weight: 500;
 }
@@ -3765,6 +3769,14 @@ body[dir="rtl"] .checkbox:checked,
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
+  .sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 @media (min-width: 768px){
   .btn.loading.btn-xl:before, .btn.loading.md\:btn-lg:before{
@@ -3844,6 +3856,14 @@ body[dir="rtl"] .checkbox:checked,
   .md\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+  .md\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 1024px){
