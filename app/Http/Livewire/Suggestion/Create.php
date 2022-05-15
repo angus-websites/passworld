@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Suggestion;
 use Livewire\Component;
 use App\Models\Wordtype;
 use App\Models\Grammar;
-//use Illuminate\Validation\Validator;
+use App\Models\Suggestion;
 use Illuminate\Support\Facades\Validator;
 
 class Create extends Component
@@ -13,20 +13,40 @@ class Create extends Component
 
     public $wordtype_id;
     public $user_word;
+    public Bool $is_profanity = false;
 
     public $user_word_preview;
     public $user_word_preview_valid;
+
+    public $is_submit = false;
 
     protected function rules()
     {
         /**
          * The validation rules
          */
-        return [
+        $this->user_word_two = $this->user_word;
+        $rules = [
            'wordtype_id' => 'required|exists:wordtypes,id',
-           'user_word' => 'required|unique:words,content,suggestions,content'
+           'user_word' => 'unique:words,content',
+           'user_word_two' => 'unique:suggestions,content',
         ];
+
+        if ($this->is_submit)
+        {
+            $rules['user_word'] = 'required|unique:words,content';
+            $rules['is_profanity'] = 'boolean';
+        }
+
+        return $rules;
     }
+
+    protected $messages = [
+        "wordtype_id.exists" => "Select a valid word type",
+        "wordtype_id.required" => "Please choose a word type",
+        "user_word.unique" => "This word is already in use",
+        "user_word_two.unique" => "This word has already been suggested",
+    ];
 
     public function render()
     {
@@ -49,31 +69,8 @@ class Create extends Component
          */
         
         $this->user_word_preview_valid = false;
-
-        // Validate using custom validator
-
-        $data= [
-            "wordtype_id" => $this->wordtype_id,
-            "user_word" => $this->user_word,
-            "user_word_second" => $this->user_word,
-        ];
-
-        $rules = [
-            'wordtype_id' => 'required|exists:wordtypes,id',
-            'user_word' => 'unique:words,content',
-            'user_word_second' => 'unique:suggestions,content'
-        ];
-
-        $messages = [
-            'wordtype_id.required' => 'Please select a word type',
-            'wordtype_id.exists' => 'Invalid word type selected somehow',
-            'user_word.unique' => 'This word is already in use',
-            'user_word_second.unique' => 'This word has already been suggested',
-        ];
-
-        $validator = Validator::make($data, $rules, $messages);
-        $validator->validate();
-
+        $this->is_submit = false;
+        $this->validate();
         if ($this->wordtype_id && $this->user_word){
 
             // Generate the preview
@@ -104,7 +101,31 @@ class Create extends Component
         
         $this->refreshPreview();
 
+    }
+
+    public function submitWord()
+    {
+        /**
+         * Called when the user
+         * clicks the submit button
+         */
+        $this->is_submit = true;
+        $this->validate();
+
+        // Create a new suggestion
+        Suggestion::create(
+            [
+                "content" => $this->user_word,
+                "wordtype_id" => $this->wordtype_id,
+                "profanity" => $this->is_profanity,
+            ]
+        );
+
+        // Reset form
+        $this->user_word = "";
+        $this->user_word_preview_valid = false;
         
+        session()->flash('success', 'Word has been submitted');
 
     }
 }

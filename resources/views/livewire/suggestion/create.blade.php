@@ -1,9 +1,9 @@
 <div>
 
-
+    <x-alerts.all/>
     <!--Form-->
     <div class="sm:mx-auto lg:mx-0">
-        <form wire:submit.prevent="">
+        <form wire:submit.prevent="submitWord">
             <div class="grid grid-cols-2 gap-4">
 
                 <!--Word type select-->
@@ -40,6 +40,7 @@
                                     error="user_word*"
                                     name="content"
                                     required 
+                                    autofocus
                                     autocomplete="off" />
                             <label class="label">
                             <p class="label-text-alt">Submissions are anonymous</p> 
@@ -64,7 +65,7 @@
 
                 <!-- Contains profanity -->
                 <label class="cursor-pointer block justify-start space-x-3">
-                    <input id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity" value="1">
+                    <input wire:model="is_profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
                     <span class="label-text">Is your word a profanity?</span> 
                 </label>
 
