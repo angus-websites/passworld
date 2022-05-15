@@ -4,7 +4,7 @@
     <!--Form-->
     <div class="sm:mx-auto lg:mx-0">
         <form wire:submit.prevent="submitWord">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-5">
 
                 <!--Word type select-->
                 <div class="col-span-1">
@@ -27,8 +27,25 @@
                 </div>
 
                 <!--Word-->
-                <div class="col-span-2">
-                    <div class="flex flex-row items-center gap-x-4">
+                <div class="col-span-full">
+                    <div class="flex flex-col gap-y-5">
+
+                        @if($this->user_word_preview_valid)
+                            <!-- Preview -->
+                            <div class="flex-1">
+                                
+                                    <div class="flex flex-col gap-y-2">
+                                        <div class="flex-1">
+                                            <div class="text-center">
+                                                <b>{{$user_word_preview}}</b>
+                                            </div>
+                                        </div>
+                                        <x-button type="button" wire:click="refreshPreview" class="btn-sm">Refresh</x-button>
+                                    </div>
+                            </div>
+                        @endif
+
+
                         <!-- Word input -->
                         <div class="flex-1">
                             <label class="label" for="wordInput">Your word</label>
@@ -42,32 +59,17 @@
                                     required 
                                     autofocus
                                     autocomplete="off" />
-                            <label class="label">
-                            <p class="label-text-alt">Submissions are anonymous</p> 
-                            </label>
-                        </div>
-                        <!-- Preview -->
-                        <div class="flex-1">
-                            @if($this->user_word_preview_valid)
-                                <div class="flex flex-row items-center">
-                                    <div class="flex-1">
-                                        <div class="text-center">
-                                            <p class="underline">Example</p>
-                                            <b>{{$user_word_preview}}</b>
-                                        </div>
-                                    </div>
-                                    <x-button type="button" wire:click="refreshPreview" class="btn-sm">Refresh</x-button>
-                                </div>
-                            @endif
                         </div>
                     </div>
                 </div>
 
                 <!-- Contains profanity -->
-                <label class="cursor-pointer block justify-start space-x-3">
-                    <input wire:model="is_profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
-                    <span class="label-text">Is your word a profanity?</span> 
-                </label>
+                <div class="py-2">
+                    <label class="cursor-pointer block justify-start space-x-3">
+                        <input wire:model="is_profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
+                        <span class="label-text">Is your word a profanity?</span> 
+                    </label>
+                </div>
 
                 <!--Submit button-->
                 <div class="col-start-1">

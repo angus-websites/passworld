@@ -7,9 +7,11 @@ use App\Models\Wordtype;
 use App\Models\Grammar;
 use App\Models\Suggestion;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Create extends Component
 {
+    use AuthorizesRequests;
 
     public $wordtype_id;
     public $user_word;
@@ -112,6 +114,8 @@ class Create extends Component
         $this->is_submit = true;
         $this->validate();
 
+        $this->authorize('create', Suggestion::class);
+
         // Create a new suggestion
         Suggestion::create(
             [
@@ -124,7 +128,7 @@ class Create extends Component
         // Reset form
         $this->user_word = "";
         $this->user_word_preview_valid = false;
-        
+
         session()->flash('success', 'Word has been submitted');
 
     }
