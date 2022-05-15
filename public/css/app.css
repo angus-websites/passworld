@@ -2082,6 +2082,27 @@ html{
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
 }
+.checkbox-accent{
+  --chkbg: var(--a);
+  --chkfg: var(--ac);
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+.checkbox-accent:hover{
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+.checkbox-accent:focus-visible{
+  outline: 2px solid hsl(var(--a));
+}
+.checkbox-accent:checked, .checkbox-accent[checked="true"]{
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--a) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--ac) / var(--tw-text-opacity));
+}
 .checkbox:disabled{
   cursor: not-allowed;
   border-color: transparent;
@@ -2987,6 +3008,9 @@ body[dir="rtl"] .checkbox:checked,
 .h-screen{
   height: 100vh;
 }
+.h-20{
+  height: 5rem;
+}
 .min-h-screen{
   min-height: 100vh;
 }
@@ -3010,6 +3034,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .w-10{
   width: 2.5rem;
+}
+.w-20{
+  width: 5rem;
 }
 .max-w-7xl{
   max-width: 80rem;
@@ -3235,6 +3262,10 @@ body[dir="rtl"] .checkbox:checked,
   --tw-border-opacity: 1;
   border-color: rgb(82 210 61 / var(--tw-border-opacity));
 }
+.border-primary{
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -3302,6 +3333,10 @@ body[dir="rtl"] .checkbox:checked,
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
+.bg-base-200{
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
+}
 .fill-current{
   fill: currentColor;
 }
@@ -3313,6 +3348,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .p-4{
   padding: 1rem;
+}
+.p-6{
+  padding: 1.5rem;
 }
 .px-4{
   padding-left: 1rem;
@@ -3739,6 +3777,9 @@ body[dir="rtl"] .checkbox:checked,
   }
   .sm\:rounded-lg{
     border-radius: 0.5rem;
+  }
+  .sm\:p-0{
+    padding: 0px;
   }
   .sm\:px-6{
     padding-left: 1.5rem;
