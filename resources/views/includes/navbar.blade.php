@@ -1,5 +1,5 @@
 <!--Navbar-->
-<nav x-data="{ open: false }" class="bg-neutral-focus">
+<nav x-data="{ open: false }" class="bg-background">
   <nav class="navbar shadow-lg  text-neutral-content">
     <!--Top navbar-->
     <div class="container mx-auto px-6 md:px-3">

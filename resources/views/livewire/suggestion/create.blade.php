@@ -28,26 +28,21 @@
 
                 <!--Word-->
                 <div class="col-span-full">
-                    <div class="flex flex-col gap-y-5">
+                    <div class="flex flex-col gap-y-5 md:grid md:grid-cols-2 md:gap-x-4">
 
                         @if($this->user_word_preview_valid)
                             <!-- Preview -->
-                            <div class="flex-1">
-                                
-                                    <div class="flex flex-col gap-y-2">
-                                        <div class="flex-1">
-                                            <div class="text-center">
-                                                <b>{{$user_word_preview}}</b>
-                                            </div>
-                                        </div>
-                                        <x-button type="button" wire:click="refreshPreview" class="btn-sm">Refresh</x-button>
-                                    </div>
+                            <div class="flex-1 md:col-span-1 md:order-last flex flex-col gap-y-4">
+                                <div class="flex-1 text-center">
+                                    <b>{{$user_word_preview}}</b>
+                                </div>
+                                <x-button type="button" wire:click="refreshPreview" class="btn-sm btn-block max-w-sm mx-auto">Refresh</x-button>
                             </div>
                         @endif
 
 
                         <!-- Word input -->
-                        <div class="flex-1">
+                        <div class="flex-1 md:col-span-1">
                             <label class="label" for="wordInput">Your word</label>
                             <x-input
                                     wire:model.debounce.250ms="user_word"
