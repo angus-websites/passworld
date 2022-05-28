@@ -2106,27 +2106,6 @@ html{
           animation: checkmark var(--animation-input, 0.2s) ease-in-out;
   background-image: linear-gradient(90deg, transparent 80%, hsl(var(--chkbg)) 80%), linear-gradient(-90deg, transparent 80%, hsl(var(--chkbg)) 80%), linear-gradient(0deg, hsl(var(--chkbg)) 43%, hsl(var(--chkfg)) 43%, hsl(var(--chkfg)) 57%, hsl(var(--chkbg)) 57%);
 }
-.checkbox-secondary{
-  --chkbg: var(--s);
-  --chkfg: var(--sc);
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--s) / var(--tw-border-opacity));
-}
-.checkbox-secondary:hover{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--s) / var(--tw-border-opacity));
-}
-.checkbox-secondary:focus-visible{
-  outline: 2px solid hsl(var(--s));
-}
-.checkbox-secondary:checked, .checkbox-secondary[checked="true"]{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--s) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--s) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--sc) / var(--tw-text-opacity));
-}
 .checkbox-accent{
   --chkbg: var(--a);
   --chkfg: var(--ac);
@@ -2920,6 +2899,9 @@ body[dir="rtl"] .checkbox:checked,
 .col-span-full{
   grid-column: 1 / -1;
 }
+.col-span-2{
+  grid-column: span 2 / span 2;
+}
 .col-start-1{
   grid-column-start: 1;
 }
@@ -3010,6 +2992,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .mt-1{
   margin-top: 0.25rem;
+}
+.mr-auto{
+  margin-right: auto;
 }
 .block{
   display: block;
@@ -3393,6 +3378,14 @@ body[dir="rtl"] .checkbox:checked,
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.py-20{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
 .pt-4{
   padding-top: 1rem;
 }
@@ -3517,10 +3510,6 @@ body[dir="rtl"] .checkbox:checked,
 .text-medium{
   --tw-text-opacity: 1;
   color: rgb(201 173 63 / var(--tw-text-opacity));
-}
-.text-info-content{
-  --tw-text-opacity: 1;
-  color: hsl(var(--inc, var(--nc)) / var(--tw-text-opacity));
 }
 .text-white{
   --tw-text-opacity: 1;

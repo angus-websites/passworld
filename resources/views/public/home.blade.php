@@ -45,7 +45,7 @@
         <p class="md:text-base text-center text-sm">Time to crack: <b id="timeEstimate">15 years</b></p>
       </div>
 
-      <div class="shadow-ps bg-white overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
+      <div class="shadow-ps bg-whitep overflow-hidden rounded-lg mt-8 px-4 py-5 sm:px-6">
         <!--Length Slider-->
         <div class="">
           <!--Length label-->
