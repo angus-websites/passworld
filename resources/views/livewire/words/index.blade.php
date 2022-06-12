@@ -33,9 +33,12 @@
               <td>{{$counter+1}}</td> 
               <th>{{$word->content}}</th> 
               <td><span class="tableTag badge {{$word->wordType()->name}}BG">{{$word->wordType()->name}}</span></td>
-              @can("delete", App\Models\Word::class)
+              @can("update", $word)
                 <td><input type="checkbox" class="checkbox" name="words[]" value="{{$word->id}}"></td>
-                <td><a href="{{{ route('words.edit', ['word' => $word]) }}}" class="btn btn-xs btn-ghost">Edit</a></td>
+                {{-- <td><a href="{{{ route('words.edit', ['word' => $word]) }}}" class="btn btn-xs btn-ghost">Edit</a></td> --}}
+                <td>
+                  <x-button wire:click="edit({{$word}})" class="btn-ghost btn-xs" >Edit</x-button>
+                </td>
               @endcan 
             </tr>
           @endforeach
@@ -54,18 +57,17 @@
               <div class="grid md:grid-cols-2 gap-4 p-4">
                   <!-- Word content -->
                   <div class="form-control col-span-2">
-                      <x-label :value="__('Tag name')" />
-                      <x-input wire:model="editing_word.name"
+                      <x-label :value="__('Word')" />
+                      <x-input wire:model.defer="editing_word.content"
                                   class="input-bordered"
                                   type="text"
-                                  showgreen="true"
-                                  error="editing_word.name"
+                                  error="editing_word.content"
                                   required />
                   </div>
 
                   <!--Word type-->
                   <x-label :value="__('Word type')" for="wordtype_id" />
-                  <x-select wire:model="editing_word.category_id"
+                  <x-select wire:model="editing_word.wordtype_id"
                             error="editing_word.wordtype_id"
                             id="wordtype" 
                             name="wordtype_id" 
@@ -86,7 +88,7 @@
                   <x-button wire:click="delete" class="mr-auto btn-error">Delete</x-button>
               @endif
               <label for="editModal" class="btn">Cancel</label>
-              <x-button wire:click="saveTag" type="button" class="btn btn-primary">Save</x-button>
+              <x-button wire:click="saveWord" type="button" class="btn btn-primary">Save</x-button>
           </x-slot>
       </x-modal-daisy>
     @endcanany
