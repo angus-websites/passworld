@@ -9,7 +9,6 @@
         @livewire("words.index")
       </div>
 
-
     </div>
   </div>
 </x-app-layout>
