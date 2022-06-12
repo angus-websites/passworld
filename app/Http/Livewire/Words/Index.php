@@ -22,7 +22,8 @@ class Index extends Component
          */
         return [
             'editing_word.content' => ["required", "string", "min:1", "unique:words,content,". $this->editing_word->id],
-
+            'editing_word.wordtype_id' => 'required|exists:wordtypes,id',
+            'editing_word.profanity' => 'required|boolean',
 
         ];
     }

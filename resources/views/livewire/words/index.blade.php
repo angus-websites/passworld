@@ -22,7 +22,6 @@
             <th>Word</th> 
             <th>Type</th> 
             @can("delete", App\Models\Word::class)
-              <th>Select</th>    
               <th></th>           
             @endcan
           </tr>
@@ -34,8 +33,6 @@
               <th>{{$word->content}}</th> 
               <td><span class="tableTag badge {{$word->wordType()->name}}BG">{{$word->wordType()->name}}</span></td>
               @can("update", $word)
-                <td><input type="checkbox" class="checkbox" name="words[]" value="{{$word->id}}"></td>
-                {{-- <td><a href="{{{ route('words.edit', ['word' => $word]) }}}" class="btn btn-xs btn-ghost">Edit</a></td> --}}
                 <td>
                   <x-button wire:click="edit({{$word}})" class="btn-ghost btn-xs" >Edit</x-button>
                 </td>
@@ -79,6 +76,13 @@
                       </option>
                     @endforeach
                   </x-select>
+
+                  <!-- Contains profanity -->
+                  <label class="cursor-pointer block justify-start space-x-3 mt-4">
+                      <input wire:model="editing_word.profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
+                      <span class="label-text">Profanity</span> 
+                  </label>
+
 
               </div>
           </x-slot>
