@@ -7,7 +7,7 @@
     <div class="mt-8 mb-4">
       @can("create", App\Models\Word::class)
       <x-button-group class="sm:max-w-xs">
-        <a href="{{{ route('words.create') }}}" class="btn btn-primary">Create word</a> 
+        <x-button wire:click="createWord" class="btn btn-primary">Create word</x-button>
         <a href="{{{ route('suggestions.create') }}}" class="btn btn-link text-info">Suggest a new word</a>
       </x-button-group>
       @else
@@ -66,25 +66,34 @@
                   </div>
 
                   <!--Word type-->
-                  <x-label :value="__('Word type')" for="wordtype_id" />
-                  <x-select wire:model="editing_word.wordtype_id"
-                            error="editing_word.wordtype_id"
-                            id="wordtype" 
-                            name="wordtype_id" 
-                            class="select-bordered w-full" 
-                            required>
-                    @foreach($wordtypes as $wordtype)
-                      <option value="{{$wordtype->id}}">
-                        {{$wordtype->name}}
-                      </option>
-                    @endforeach
-                  </x-select>
+                  <div class="form-control col-span-2">
+                    <x-label :value="__('Word type')" for="wordtype_id" />
+                    <x-select wire:model="editing_word.wordtype_id"
+                              error="editing_word.wordtype_id"
+                              id="wordtype" 
+                              name="wordtype_id" 
+                              class="select-bordered w-full" 
+                              required>
+                      @foreach($wordtypes as $wordtype)
+                        <option value="{{$wordtype->id}}">
+                          {{$wordtype->name}}
+                        </option>
+                      @endforeach
+                    </x-select>
+                  </div>
 
                   <!-- Contains profanity -->
-                  <label class="cursor-pointer block justify-start space-x-3 mt-4">
-                      <input wire:model="editing_word.profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
-                      <span class="label-text">Profanity</span> 
-                  </label>
+                  <div class="form-control col-span-2">
+                    <label class="cursor-pointer block justify-start space-x-3 mt-4">
+                        <input wire:model="editing_word.profanity" id="profanity" type="checkbox" class="checkbox checkbox-sm" name="profanity">
+                        <span class="label-text">Profanity</span> 
+                    </label>
+                    @error("editing_word.profanity")
+                      <label class="label">
+                          <span class="label-text-alt">{{ $message }}</span>
+                      </label>
+                    @enderror
+                  </div>
 
 
               </div>
