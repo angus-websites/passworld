@@ -1,5 +1,8 @@
 <div>
 
+    <!-- Alerts -->
+    <x-alerts.all />
+
     <!--Buttons-->
     <div class="mt-8 mb-4">
       @can("create", App\Models\Word::class)
@@ -89,7 +92,9 @@
 
           <x-slot name="footer">
               @if($this->editing_word->exists)
-                  <x-button wire:click="delete" class="mr-auto btn-error">Delete</x-button>
+                  @can("delete", $this->editing_word)
+                    <x-button wire:click="deleteWord" class="mr-auto btn-error">Delete</x-button>
+                  @endcan
               @endif
               <label for="editModal" class="btn">Cancel</label>
               <x-button wire:click="saveWord" type="button" class="btn btn-primary">Save</x-button>

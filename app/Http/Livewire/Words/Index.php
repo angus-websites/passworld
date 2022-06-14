@@ -5,10 +5,11 @@ namespace App\Http\Livewire\Words;
 use Livewire\Component;
 use App\Models\Word;
 use App\Models\Wordtype;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Index extends Component
 {
-
+    use AuthorizesRequests;
     public $is_create = false;
     public $edit_modal_open = false;
     public Word $editing_word;
@@ -45,6 +46,18 @@ class Index extends Component
          */
         $this->edit_modal_open = true;
         $this->editing_word = $word;
+    }
+
+    public function deleteWord()
+    {
+        /**
+         * Delete the current word
+         */
+        $this->authorize('delete', $this->editing_word);
+        $this->editing_word->delete();
+        $this->edit_modal_open = false;
+        session()->flash('info', 'Word deleted');
+        
     }
 
     public function saveWord()
