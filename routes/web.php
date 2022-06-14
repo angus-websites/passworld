@@ -25,6 +25,11 @@ Route::get('/', [GenerateController::class, 'index']);
 //Assword
 Route::get('/ass', [AssController::class, 'index']);
 
+// About
+Route::get('/about', function(){
+    return view("public.about");
+});
+
 //Common password controller
 Route::resource('common', CommonController::class, [
     'except' => ['edit','update']

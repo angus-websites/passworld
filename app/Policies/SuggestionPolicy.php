@@ -78,9 +78,7 @@ class SuggestionPolicy
      */
     public function create(?User $user)
     {
-        return true
-            ? Response::allow()
-            : Response::deny("You cannot create a suggestion");
+        return Response::allow();
     }
 
     /**

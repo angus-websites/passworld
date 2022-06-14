@@ -1,6 +1,14 @@
 @section('title', 'Login')
+@section('description', "Login to Angus' portfolio")
+
 <x-app-layout>
-    <x-auth-card>
+    <x-cards.auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -11,15 +19,15 @@
             @csrf
 
             <!-- Email Address -->
-            <div>
+            <div class="form-control mb-4">
                 <x-label for="email" :value="__('Email')" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email" class="input-bordered" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div class="form-control mb-4">
                 <x-label for="password" :value="__('Password')" />
-                <x-input id="password" class="w-full"
+                <x-input id="password" class="input-bordered"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
@@ -27,20 +35,21 @@
 
             <!-- Remember Me -->
             <label class="cursor-pointer block justify-start space-x-3 mt-4">
-                <input id="remember_me" type="checkbox" class="checkbox checkbox-sm" name="remember">
+                <input id="remember_me" type="checkbox" class="checkbox checkbox-sm checkbox-accent" name="remember">
                 <span class="label-text">Remember me</span> 
             </label>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="btn btn-link">Forgot your password?</a>
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
                 @endif
 
-                <x-button class="btn-sm ml-3">
-                    {{ __('Login') }}
+                <x-button class="ml-3 btn-sm btn-primary">
+                    {{ __('Log in') }}
                 </x-button>
-
             </div>
         </form>
-    </x-auth-card>
+    </x-cards.auth-card>
 </x-app-layout>

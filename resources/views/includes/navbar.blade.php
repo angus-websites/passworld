@@ -1,10 +1,10 @@
 <!--Navbar-->
-<nav x-data="{ open: false }" class="bg-neutral-focus">
-  <nav class="navbar shadow-lg  text-neutral-content">
+<nav x-data="{ open: false }" class="bg-background">
+  <nav class="navbar p-0 shadow-lg  text-neutral-content">
     <!--Top navbar-->
-    <div class="container mx-auto px-6 md:px-3">
+    <div class="container mx-auto px-4">
       <!--Logo on navbar-->
-      <div class="px-2 mx-2 navbar-start">
+      <div class="navbar-start">
         <img class="block lg:hidden h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
         <img class="hidden lg:block h-8 w-auto" src="/assets/images/core/logo.svg" alt="Workflow">
       </div> 
@@ -55,9 +55,6 @@
 
             </ul>
           </div>
-
-        @else
-          <a {!! Request::is('login') ? '' : 'href="/login"' !!} class="btn btn-sm rounded-btn hidden lg:flex flex-grow-0 {{ Request::is('login') ? 'btn-active bg-gray-500 hover:bg-gray-500' : 'btn-ghost hover:bg-gray-600'}}">Login</a>
         @endif
 
         <!--Hamburger-->
@@ -112,12 +109,6 @@
             {{ __('Log out') }}
           </x-responsive-nav-link>
         </form>
-      </ul>
-    @else
-      <ul class="menu p-4 overflow-y-auto border-t border-gray-200">
-        <x-responsive-nav-link href="/login" :active="Request::is('login')">
-          {{ __('Login') }}
-        </x-responsive-nav-link>
       </ul>
     @endif
   </div>

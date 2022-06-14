@@ -2,13 +2,12 @@
 
 @php
 $classes = ($active ?? false)
-            ? 'border-l-4 border-indigo-400 bg-gray-200'
+            ? 'border-l-4 border-primary bg-gray-200'
             : '';
-$hrefStr = ($active ?? false)
-            ? ""
-            : "href=$href";
 @endphp
 <li>
-  <a {{$hrefStr}} {{ $attributes->merge(['class' => $classes]) }} >{{ $slot }}</a>
+  <a href="{{$href}}" {{ $attributes->merge(['class' => $classes]) }} >{{ $slot }}</a>
 </li>
+
+
 
