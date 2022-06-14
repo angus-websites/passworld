@@ -2909,6 +2909,9 @@ body[dir="rtl"] .checkbox:checked,
 .m-auto{
   margin: auto;
 }
+.m-1{
+  margin: 0.25rem;
+}
 .my-2{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
