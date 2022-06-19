@@ -1,4 +1,4 @@
-<nav class="navbar shadow-lg text-neutral-content bg-neutral-focus">
+<nav class="navbar shadow-lg text-neutral-content bg-background">
   <!--Top navbar-->
   <div class="container mx-auto px-6 md:px-3">
     <!--Logo on navbar-->
