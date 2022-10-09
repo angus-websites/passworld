@@ -1,4 +1,7 @@
 <div>
+    <!-- Alerts -->
+    <x-alerts.all />
+
     <!--Table-->
     <div class="overflow-x-auto">
       <table class="table w-full">
@@ -23,7 +26,7 @@
               @can("approve", App\Models\Suggestion::class)
                 <td>
                     <x-button-group>
-                        <x-button class="btn-xs btn-error">Deny</x-button>
+                        <x-button wire:click="deleteSuggestion({{$suggestion}})" class="btn-xs btn-error">Deny</x-button>
                         <x-button class="btn-xs btn-success">Approve</x-button>
                     </x-button-group>
                 </td>
